@@ -1,422 +1,1378 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr" data-theme="light">
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Haider Eldaw | GIS Analyst & Data Management Officer</title>
+  <meta name="description" content="Haider Eldaw — GIS Analyst & Data Management Officer"/>
+  <title>Haider Eldaw | GIS Analyst</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700;900&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <!-- ═══ FONTS ═══ -->
+  <!-- Playfair Display (editorial display) + Plus Jakarta Sans (body) + JetBrains Mono (code) + Tajawal (Arabic) -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet"/>
+
+  <!-- ═══ FONT AWESOME ═══ -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
   <style>
-    :root {
-      --bg:        #0B1520;
-      --bg2:       #0F1E2E;
-      --bg3:       #132438;
-      --surface:   #1A2F45;
-      --border:    rgba(255,255,255,0.07);
-      --gold:      #D4A843;
-      --gold-lt:   #E8C476;
-      --gold-dim:  rgba(212,168,67,0.15);
-      --teal:      #2ABFBF;
-      --teal-dim:  rgba(42,191,191,0.12);
-      --text:      #E8EFF7;
-      --text-mid:  #8FA8C0;
-      --text-dim:  #4E6A85;
-      --white:     #F0F6FF;
-      --ff-h:      'Cormorant Garamond', Georgia, serif;
-      --ff-b:      'Outfit', sans-serif;
-      --nav-h:     68px;
-      --r:         6px;
-      --t:         0.32s cubic-bezier(0.4,0,0.2,1);
-    }
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    html{scroll-behavior:smooth}
-    body{font-family:var(--ff-b);background:var(--bg);color:var(--text);overflow-x:hidden;line-height:1.6}
-    a{color:inherit;text-decoration:none}
-    ul{list-style:none}
-    img{display:block;max-width:100%}
-    .container{width:min(1160px,92%);margin-inline:auto}
-    section{padding-block:clamp(5rem,10vw,7.5rem)}
-    .eyebrow{display:inline-flex;align-items:center;gap:.6rem;font-size:.72rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:.85rem}
-    .eyebrow::before{content:'';display:block;width:28px;height:1px;background:var(--gold)}
-    .section-title{font-family:var(--ff-h);font-size:clamp(2.2rem,4.5vw,3.4rem);font-weight:700;line-height:1.1;color:var(--white);margin-bottom:1.5rem}
-    .section-title span{color:var(--gold)}
-    .section-title em{font-style:normal;color:var(--teal)}
-    .reveal{opacity:0;transform:translateY(26px);transition:opacity .65s ease,transform .65s ease}
-    .reveal.visible{opacity:1;transform:none}
-    .d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+  /* ═══════════════════════════════════════════════════════════
+     DESIGN SYSTEM — UN / HUMANITARIAN INTELLIGENCE AESTHETIC
+     Inspiration: OCHA, UNDP, ReliefWeb — but elevated & modern
+  ═══════════════════════════════════════════════════════════ */
 
-    /* NAV */
-    #nav{position:fixed;inset:0 0 auto;height:var(--nav-h);z-index:1000;transition:background var(--t),border-color var(--t);border-bottom:1px solid transparent}
-    #nav.solid{background:rgba(11,21,32,.96);backdrop-filter:blur(16px);border-color:var(--border)}
-    .nav-inner{height:100%;display:flex;align-items:center;justify-content:space-between}
-    .nav-logo{font-family:var(--ff-h);font-size:1.5rem;font-weight:700;color:var(--white)}
-    .nav-logo span{color:var(--gold)}
-    .nav-links{display:flex;gap:2.25rem;align-items:center}
-    .nav-links a{font-size:.82rem;font-weight:500;letter-spacing:.05em;color:var(--text-mid);position:relative;transition:color var(--t)}
-    .nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1.5px;background:var(--gold);transition:width var(--t)}
-    .nav-links a:hover,.nav-links a.active{color:var(--white)}
-    .nav-links a:hover::after,.nav-links a.active::after{width:100%}
-    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
-    .hamburger span{display:block;width:22px;height:1.5px;background:var(--text);border-radius:2px;transition:all var(--t)}
-    .hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
-    .hamburger.open span:nth-child(2){opacity:0}
-    .hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
-    .mob-menu{display:none;position:fixed;inset:var(--nav-h) 0 0;background:rgba(11,21,32,.98);flex-direction:column;align-items:center;justify-content:center;gap:2.5rem;z-index:999}
-    .mob-menu.open{display:flex}
-    .mob-menu a{font-family:var(--ff-h);font-size:2.2rem;font-weight:700;color:var(--text);transition:color var(--t)}
-    .mob-menu a:hover{color:var(--gold)}
+  /* ── LIGHT MODE ── */
+  :root {
+    --primary:      #0F172A;
+    --secondary:    #1E293B;
+    --accent:       #38BDF8;
+    --accent2:      #0EA5E9;
+    --accent3:      #22D3EE;
+    --background:   #F8FAFC;
+    --surface:      #FFFFFF;
+    --surface2:     #F1F5F9;
+    --border:       #E2E8F0;
+    --text:         #334155;
+    --text-soft:    #64748B;
+    --text-dim:     #94A3B8;
+    --text-inv:     #F8FAFC;
+    --shadow:       rgba(15,23,42,0.08);
+    --shadow-md:    rgba(15,23,42,0.14);
+    --glow:         rgba(56,189,248,0.25);
 
-    /* HERO */
-    #hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;padding-block:var(--nav-h) 0}
-    .hero-bg{position:absolute;inset:0;background:linear-gradient(135deg,#050d16 0%,#0d1f30 50%,#111d2b 100%)}
-    .hero-bg::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 55% at 80% 40%,rgba(42,191,191,.1) 0%,transparent 65%),radial-gradient(ellipse 50% 60% at 15% 70%,rgba(212,168,67,.08) 0%,transparent 60%)}
-    .hero-bg::after{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(42,191,191,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(42,191,191,.04) 1px,transparent 1px);background-size:50px 50px}
-    .hero-coord{position:absolute;font-size:.62rem;font-family:monospace;color:rgba(42,191,191,.25);letter-spacing:.05em;user-select:none}
-    .c1{top:18%;left:6%}.c2{top:72%;left:4%}.c3{top:25%;right:5%}.c4{bottom:15%;right:8%}
-    .hero-content{position:relative;z-index:1;max-width:780px}
-    .hero-eyebrow{display:inline-flex;align-items:center;gap:.75rem;font-size:.74rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--teal);margin-bottom:1.5rem;opacity:0;animation:fadeUp .8s .2s forwards}
-    .hero-name{font-family:var(--ff-h);font-size:clamp(4rem,9vw,8rem);font-weight:900;line-height:.92;color:var(--white);margin-bottom:1rem;opacity:0;animation:fadeUp .8s .35s forwards}
-    .hero-name .last{color:var(--gold);display:block}
-    .hero-role{font-size:clamp(.9rem,1.8vw,1.1rem);font-weight:400;color:var(--text-mid);margin-bottom:1.75rem;opacity:0;animation:fadeUp .8s .5s forwards}
-    .hero-role strong{color:var(--teal);font-weight:600}
-    .hero-bio{font-size:1.05rem;line-height:1.8;color:rgba(232,239,247,.65);max-width:580px;margin-bottom:2.25rem;opacity:0;animation:fadeUp .8s .65s forwards}
-    .hero-chips{display:flex;flex-wrap:wrap;gap:.6rem;margin-bottom:2.5rem;opacity:0;animation:fadeUp .8s .8s forwards}
-    .chip{padding:.3rem .85rem;border:1px solid rgba(42,191,191,.3);border-radius:100px;font-size:.75rem;font-weight:500;color:var(--teal);letter-spacing:.04em}
-    .hero-btns{display:flex;gap:1rem;flex-wrap:wrap;opacity:0;animation:fadeUp .8s .95s forwards}
-    .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.8rem 1.8rem;font-family:var(--ff-b);font-size:.84rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;border-radius:var(--r);cursor:pointer;border:none;transition:all var(--t)}
-    .btn-gold{background:var(--gold);color:var(--bg)}
-    .btn-gold:hover{background:var(--gold-lt);transform:translateY(-2px);box-shadow:0 10px 30px rgba(212,168,67,.35)}
-    .btn-ghost{background:transparent;border:1px solid var(--border);color:var(--text-mid)}
-    .btn-ghost:hover{border-color:var(--teal);color:var(--teal);transform:translateY(-2px)}
-    .hero-scroll{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.5rem;font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:var(--text-dim);z-index:1;opacity:0;animation:fadeUp 1s 1.3s forwards}
-    .hero-scroll i{animation:bob 2s infinite}
-    @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(7px)}}
-    @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+    --ff-display:   'Playfair Display', Georgia, serif;
+    --ff-body:      'Plus Jakarta Sans', sans-serif;
+    --ff-mono:      'JetBrains Mono', monospace;
+    --ff-ar:        'Tajawal', sans-serif;
 
-    /* ABOUT */
-    #about{background:var(--bg2)}
-    .about-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:5rem;align-items:start}
-    .about-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:2.5rem;position:relative;overflow:hidden}
-    .about-card::before{content:'';position:absolute;top:-80px;right:-80px;width:220px;height:220px;background:radial-gradient(circle,rgba(42,191,191,.1),transparent 65%);border-radius:50%}
-    .about-card-title{font-family:var(--ff-h);font-size:1.7rem;font-weight:700;color:var(--white);margin-bottom:1rem}
-    .about-card p{font-size:.93rem;line-height:1.8;color:var(--text-mid);margin-bottom:2rem}
-    .stats-row{display:flex;gap:2rem;flex-wrap:wrap}
-    .stat strong{display:block;font-family:var(--ff-h);font-size:2.8rem;font-weight:700;color:var(--gold);line-height:1}
-    .stat span{font-size:.75rem;color:var(--text-dim);letter-spacing:.08em;text-transform:uppercase}
-    .cq{display:flex;flex-direction:column;gap:.75rem;margin-top:2rem;padding-top:2rem;border-top:1px solid var(--border)}
-    .cq-row{display:flex;align-items:center;gap:.75rem;font-size:.85rem;color:var(--text-mid)}
-    .cq-row i{color:var(--gold);width:16px;text-align:center}
-    .cq-row a:hover{color:var(--teal)}
-    .about-text p{font-size:1rem;line-height:1.85;color:var(--text-mid);margin-bottom:1.1rem}
-    .tag-cloud{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.5rem}
-    .tag{padding:.3rem .85rem;background:var(--gold-dim);border:1px solid rgba(212,168,67,.2);border-radius:100px;font-size:.77rem;font-weight:500;color:var(--gold-lt);transition:all var(--t)}
-    .tag:hover{background:var(--gold);color:var(--bg);border-color:var(--gold)}
+    --nav-h:        66px;
+    --radius:       10px;
+    --radius-lg:    16px;
+    --ease:         cubic-bezier(0.4,0,0.2,1);
+    --t:            0.28s var(--ease);
+    --t-slow:       0.55s var(--ease);
+  }
 
-    /* SKILLS */
-    #skills{background:var(--bg)}
-    .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;margin-top:3rem}
-    .skill-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:2rem;transition:transform var(--t),border-color var(--t),box-shadow var(--t)}
-    .skill-card:hover{transform:translateY(-5px);border-color:rgba(212,168,67,.3);box-shadow:0 20px 50px rgba(0,0,0,.35)}
-    .skill-ico{width:50px;height:50px;background:var(--gold-dim);border:1px solid rgba(212,168,67,.25);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.25rem;color:var(--gold);margin-bottom:1.25rem}
-    .skill-card h3{font-family:var(--ff-h);font-size:1.25rem;font-weight:700;color:var(--white);margin-bottom:1.1rem}
-    .bar-list{display:flex;flex-direction:column;gap:.9rem}
-    .bar-item label{display:flex;justify-content:space-between;font-size:.8rem;color:var(--text-mid);font-weight:500;margin-bottom:.3rem}
-    .bar-track{height:5px;background:var(--bg3);border-radius:100px;overflow:hidden}
-    .bar-fill{height:100%;width:0;border-radius:100px;background:linear-gradient(90deg,var(--gold),var(--gold-lt));transition:width 1.3s cubic-bezier(0.4,0,.2,1)}
-    .bar-fill.teal{background:linear-gradient(90deg,var(--teal),#7edddd)}
-    .soft-grid{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:3rem}
-    .soft-chip{display:flex;align-items:center;gap:.5rem;padding:.55rem 1.1rem;background:var(--teal-dim);border:1px solid rgba(42,191,191,.2);border-radius:100px;font-size:.84rem;color:var(--teal);transition:all var(--t)}
-    .soft-chip:hover{background:var(--teal);color:var(--bg);border-color:var(--teal)}
+  /* ── DARK MODE ── */
+  [data-theme="dark"] {
+    --primary:      #020617;
+    --secondary:    #0F172A;
+    --accent:       #38BDF8;
+    --accent2:      #7DD3FC;
+    --accent3:      #22D3EE;
+    --background:   #020617;
+    --surface:      #0F172A;
+    --surface2:     #1E293B;
+    --border:       #1E293B;
+    --text:         #E2E8F0;
+    --text-soft:    #94A3B8;
+    --text-dim:     #475569;
+    --text-inv:     #020617;
+    --shadow:       rgba(0,0,0,0.4);
+    --shadow-md:    rgba(0,0,0,0.6);
+    --glow:         rgba(56,189,248,0.18);
+  }
 
-    /* EXPERIENCE */
-    #experience{background:var(--bg2)}
-    .timeline{position:relative;margin-top:3rem}
-    .timeline::before{content:'';position:absolute;left:20px;top:0;bottom:0;width:1.5px;background:linear-gradient(to bottom,var(--gold),var(--teal) 70%,transparent)}
-    .t-item{padding-left:62px;position:relative;margin-bottom:2.75rem}
-    .t-item:last-child{margin-bottom:0}
-    .t-dot{position:absolute;left:8px;top:6px;width:26px;height:26px;background:var(--bg2);border:2px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.58rem;color:var(--gold);transition:background var(--t),transform var(--t)}
-    .t-item:hover .t-dot{background:var(--gold);color:var(--bg);transform:scale(1.2)}
-    .t-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.75rem 2rem;transition:border-color var(--t),box-shadow var(--t)}
-    .t-item:hover .t-card{border-color:rgba(212,168,67,.25);box-shadow:0 12px 40px rgba(0,0,0,.25)}
-    .t-head{display:flex;flex-wrap:wrap;align-items:flex-start;gap:.75rem;margin-bottom:.85rem}
-    .t-role{font-family:var(--ff-h);font-size:1.2rem;font-weight:700;color:var(--white)}
-    .t-org{font-size:.78rem;font-weight:600;padding:.2rem .75rem;background:var(--gold-dim);border:1px solid rgba(212,168,67,.2);border-radius:100px;color:var(--gold-lt)}
-    .t-date{font-size:.75rem;color:var(--text-dim);display:flex;align-items:center;gap:.3rem}
-    .t-card>p{font-size:.92rem;line-height:1.75;color:var(--text-mid);margin-bottom:.75rem}
-    .t-card ul{display:flex;flex-direction:column;gap:.4rem}
-    .t-card ul li{font-size:.88rem;line-height:1.65;color:var(--text-mid);padding-left:1.1rem;position:relative}
-    .t-card ul li::before{content:'▸';position:absolute;left:0;color:var(--teal);font-size:.65rem;top:.25em}
-    .fl-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.25rem;margin-top:3rem}
-    .fl-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.5rem;transition:border-color var(--t),transform var(--t)}
-    .fl-card:hover{border-color:rgba(42,191,191,.3);transform:translateY(-4px)}
-    .fl-year{font-size:.7rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--teal);margin-bottom:.6rem}
-    .fl-card h4{font-family:var(--ff-h);font-size:1.05rem;font-weight:700;color:var(--white);margin-bottom:.6rem;line-height:1.3}
-    .fl-card p{font-size:.85rem;line-height:1.7;color:var(--text-mid)}
+  /* ── RTL Arabic ── */
+  [dir="rtl"] { font-family: var(--ff-ar); }
+  [dir="rtl"] .nav-links { flex-direction: row-reverse; }
+  [dir="rtl"] .hero-btns { flex-direction: row-reverse; }
+  [dir="rtl"] .eyebrow::before { display: none; }
+  [dir="rtl"] .eyebrow::after { content:''; display:block; width:28px; height:1.5px; background:var(--accent); }
+  [dir="rtl"] .t-item { padding-left:0; padding-right:56px; }
+  [dir="rtl"] .timeline::before { left:auto; right:18px; }
+  [dir="rtl"] .t-dot { left:auto; right:4px; }
+  [dir="rtl"] .skill-tag i { margin-right:0; margin-left:.45rem; }
+  [dir="rtl"] .nav-controls { flex-direction: row-reverse; }
 
-    /* EDUCATION */
-    #education{background:var(--bg)}
-    .edu-cert-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:3rem}
-    .block-title{font-family:var(--ff-h);font-size:1.5rem;font-weight:700;color:var(--white);margin-bottom:1.5rem;padding-bottom:.75rem;border-bottom:1px solid var(--border)}
-    .edu-entry{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.5rem;margin-bottom:1rem;transition:border-color var(--t)}
-    .edu-entry:hover{border-color:rgba(212,168,67,.3)}
-    .edu-entry .deg{font-family:var(--ff-h);font-size:1.1rem;font-weight:700;color:var(--white);margin-bottom:.3rem}
-    .edu-entry .uni{font-size:.82rem;color:var(--gold-lt);margin-bottom:.5rem}
-    .edu-entry .edate{font-size:.75rem;color:var(--text-dim)}
-    .edu-entry p{font-size:.85rem;color:var(--text-mid);margin-top:.5rem;line-height:1.65}
-    .cert-list{display:flex;flex-direction:column;gap:1rem}
-    .cert-item{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.25rem 1.5rem;display:flex;gap:1rem;align-items:flex-start;transition:border-color var(--t),transform var(--t)}
-    .cert-item:hover{border-color:rgba(42,191,191,.3);transform:translateX(4px)}
-    .cert-ico{width:40px;height:40px;flex-shrink:0;background:var(--teal-dim);border:1px solid rgba(42,191,191,.2);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1rem;color:var(--teal)}
-    .cert-name{font-size:.9rem;font-weight:600;color:var(--white);margin-bottom:.2rem}
-    .cert-by{font-size:.77rem;color:var(--text-dim)}
-    .cert-date{font-size:.72rem;color:var(--teal);font-weight:500;margin-top:.2rem}
+  /* ── RESET ── */
+  *,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+  html { scroll-behavior:smooth; font-size:16px; }
+  body {
+    font-family: var(--ff-body);
+    background: var(--background);
+    color: var(--text);
+    overflow-x: hidden;
+    transition: background var(--t-slow), color var(--t-slow);
+    line-height: 1.65;
+  }
+  a { color:inherit; text-decoration:none; }
+  ul { list-style:none; }
+  img { display:block; max-width:100%; }
+  button { cursor:pointer; font-family:inherit; }
 
-    /* GALLERY */
-    #gallery{background:var(--bg2)}
-    .gallery-intro{max-width:640px;margin-bottom:3rem}
-    .gallery-intro p{font-size:1.02rem;line-height:1.8;color:var(--text-mid)}
-    .gallery-notice{display:flex;align-items:flex-start;gap:1rem;background:var(--teal-dim);border:1px solid rgba(42,191,191,.25);border-radius:var(--r);padding:1rem 1.25rem;margin-bottom:2.5rem;font-size:.88rem;color:var(--teal);line-height:1.6}
-    .gallery-notice i{font-size:1.1rem;flex-shrink:0;margin-top:.1rem}
-    .gallery-notice code{background:rgba(42,191,191,.15);padding:.1rem .4rem;border-radius:3px;font-size:.82rem}
-    .gal-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.75rem}
-    .gal-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:transform var(--t),border-color var(--t),box-shadow var(--t)}
-    .gal-card:hover{transform:translateY(-6px);border-color:rgba(212,168,67,.3);box-shadow:0 24px 60px rgba(0,0,0,.4)}
-    .gal-img{width:100%;aspect-ratio:16/10;background:var(--bg3);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
-    .gal-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
-    .gal-card:hover .gal-img img{transform:scale(1.05)}
-    .gal-placeholder{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.75rem;color:var(--text-dim);padding:2rem;text-align:center;width:100%}
-    .gal-placeholder i{font-size:2.5rem}
-    .gal-placeholder p{font-size:.8rem;line-height:1.6}
-    .gal-placeholder small{font-size:.72rem;opacity:.7}
-    .gal-badge{position:absolute;top:12px;left:12px;padding:.25rem .7rem;background:rgba(11,21,32,.85);border:1px solid rgba(212,168,67,.35);border-radius:100px;font-size:.68rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);backdrop-filter:blur(8px)}
-    .gal-body{padding:1.5rem}
-    .gal-body h3{font-family:var(--ff-h);font-size:1.15rem;font-weight:700;color:var(--white);margin-bottom:.5rem;line-height:1.3}
-    .gal-body p{font-size:.85rem;line-height:1.7;color:var(--text-mid);margin-bottom:1rem}
-    .gal-tools{display:flex;flex-wrap:wrap;gap:.4rem}
-    .gal-tool{font-size:.7rem;font-weight:600;padding:.2rem .6rem;border:1px solid rgba(42,191,191,.25);border-radius:100px;color:var(--teal);letter-spacing:.04em}
-    .gal-add{border:2px dashed rgba(255,255,255,.08);border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.75rem;padding:3rem 2rem;color:var(--text-dim);text-align:center;min-height:260px;transition:border-color var(--t),color var(--t);cursor:default}
-    .gal-add:hover{border-color:rgba(212,168,67,.35);color:var(--gold)}
-    .gal-add i{font-size:2rem}
-    .gal-add span{font-size:.85rem;line-height:1.5}
+  /* ── SCROLLBAR ── */
+  ::-webkit-scrollbar { width:5px; }
+  ::-webkit-scrollbar-track { background:var(--background); }
+  ::-webkit-scrollbar-thumb { background:var(--accent); border-radius:3px; }
 
-    /* CONTACT */
-    #contact{background:var(--bg)}
-    .contact-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:5rem;align-items:start}
-    .contact-text p{font-size:1rem;line-height:1.8;color:var(--text-mid);margin-bottom:2.5rem}
-    .c-links{display:flex;flex-direction:column;gap:1.25rem}
-    .c-link{display:flex;align-items:center;gap:1rem;transition:transform var(--t)}
-    .c-link:hover{transform:translateX(5px)}
-    .c-ico{width:48px;height:48px;flex-shrink:0;background:var(--surface);border:1px solid var(--border);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;color:var(--gold);transition:background var(--t),border-color var(--t),color var(--t)}
-    .c-link:hover .c-ico{background:var(--gold);color:var(--bg);border-color:var(--gold)}
-    .c-txt strong{display:block;font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--text-dim);margin-bottom:.2rem}
-    .c-txt span{font-size:.92rem;color:var(--text)}
-    .form{display:flex;flex-direction:column;gap:1rem}
-    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
-    .fg{display:flex;flex-direction:column;gap:.4rem}
-    .fg label{font-size:.73rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text-dim)}
-    .fg input,.fg textarea{padding:.8rem 1rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--r);font-family:var(--ff-b);font-size:.92rem;color:var(--text);outline:none;resize:vertical;transition:border-color var(--t),box-shadow var(--t)}
-    .fg input:focus,.fg textarea:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(212,168,67,.12)}
-    .fg input::placeholder,.fg textarea::placeholder{color:var(--text-dim)}
+  /* ─────────────────────────────
+     UTILITIES
+  ───────────────────────────── */
+  .container { width:min(1140px,92%); margin-inline:auto; }
+  section { padding-block:clamp(4.5rem,9vw,7rem); }
 
-    /* FOOTER */
-    footer{background:#060e17;padding-block:2.5rem;border-top:1px solid var(--border)}
-    .footer-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.5rem}
-    .footer-brand{font-family:var(--ff-h);font-size:1.4rem;font-weight:700;color:var(--white)}
-    .footer-brand span{color:var(--gold)}
-    .footer-copy{font-size:.78rem;color:var(--text-dim)}
-    .footer-soc{display:flex;gap:.75rem}
-    .footer-soc a{width:36px;height:36px;border:1px solid var(--border);border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:.85rem;color:var(--text-dim);transition:all var(--t)}
-    .footer-soc a:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-2px)}
+  .eyebrow {
+    display:inline-flex; align-items:center; gap:.65rem;
+    font-size:.72rem; font-weight:600;
+    letter-spacing:.22em; text-transform:uppercase;
+    color:var(--accent); margin-bottom:.9rem;
+    font-family: var(--ff-mono);
+  }
+  .eyebrow::before { content:'//'; color:var(--accent); font-family:var(--ff-mono); }
 
-    /* RESPONSIVE */
-    @media(max-width:900px){
-      .about-grid,.contact-grid,.edu-cert-grid{grid-template-columns:1fr;gap:2.5rem}
-      .nav-links{display:none}
-      .hamburger{display:flex}
-    }
-    @media(max-width:580px){
-      .form-row{grid-template-columns:1fr}
-      .hero-btns{flex-direction:column}
-      .btn{justify-content:center}
-      .timeline::before{left:14px}
-      .t-item{padding-left:48px}
-      .t-dot{left:2px}
-    }
+  .section-title {
+    font-family: var(--ff-display);
+    font-size:clamp(2rem,4.2vw,3.1rem);
+    font-weight:800; line-height:1.1;
+    color:var(--primary); margin-bottom:1.25rem;
+    transition: color var(--t-slow);
+  }
+  [data-theme="dark"] .section-title { color:var(--text); }
+  .section-title span { color:var(--accent); }
+
+  /* Reveal animations */
+  .reveal {
+    opacity:0; transform:translateY(28px);
+    transition: opacity .65s ease, transform .65s ease;
+  }
+  .reveal.visible { opacity:1; transform:none; }
+  .d1{transition-delay:.08s} .d2{transition-delay:.16s}
+  .d3{transition-delay:.24s} .d4{transition-delay:.32s}
+
+  /* Glass card */
+  .glass {
+    background: var(--surface);
+    border:1px solid var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 4px 24px var(--shadow);
+    transition: all var(--t-slow);
+  }
+  .glass:hover {
+    box-shadow: 0 12px 40px var(--shadow-md);
+    border-color: rgba(56,189,248,0.35);
+    transform:translateY(-3px);
+  }
+
+  /* Btn */
+  .btn {
+    display:inline-flex; align-items:center; gap:.55rem;
+    padding:.75rem 1.65rem;
+    font-family:var(--ff-body);
+    font-size:.85rem; font-weight:600;
+    letter-spacing:.04em;
+    border-radius:var(--radius);
+    border:none; transition:all var(--t);
+  }
+  .btn-accent {
+    background:var(--accent); color:#0F172A;
+  }
+  .btn-accent:hover {
+    background:var(--accent2);
+    transform:translateY(-2px);
+    box-shadow:0 8px 24px var(--glow);
+  }
+  .btn-outline {
+    background:transparent;
+    border:1.5px solid var(--border);
+    color:var(--text);
+  }
+  .btn-outline:hover {
+    border-color:var(--accent);
+    color:var(--accent);
+    transform:translateY(-2px);
+  }
+  .btn-sm { padding:.5rem 1.1rem; font-size:.78rem; }
+
+  /* ─────────────────────────────
+     TOP BAR (UN-STYLE BANNER)
+  ───────────────────────────── */
+  #topbar {
+    background: var(--secondary);
+    padding:.45rem 0;
+    font-size:.74rem;
+    color:rgba(255,255,255,0.6);
+    transition: background var(--t-slow);
+  }
+  [data-theme="dark"] #topbar { background: #000b18; }
+  .topbar-inner {
+    display:flex; justify-content:space-between; align-items:center;
+    flex-wrap:wrap; gap:.5rem;
+  }
+  .topbar-left { display:flex; align-items:center; gap:1.25rem; }
+  .topbar-left span { display:flex; align-items:center; gap:.35rem; }
+  .topbar-left i { color:var(--accent); font-size:.75rem; }
+
+  /* ─────────────────────────────
+     NAVBAR
+  ───────────────────────────── */
+  #navbar {
+    position:sticky; top:0; z-index:999;
+    height:var(--nav-h);
+    background: rgba(248,250,252,0.92);
+    backdrop-filter:blur(20px);
+    border-bottom:1px solid var(--border);
+    transition: all var(--t-slow);
+  }
+  [data-theme="dark"] #navbar {
+    background:rgba(2,6,23,0.92);
+  }
+  #navbar.scrolled {
+    box-shadow:0 4px 30px var(--shadow);
+  }
+  .nav-inner {
+    height:100%; display:flex;
+    align-items:center; justify-content:space-between;
+  }
+  .nav-logo {
+    font-family:var(--ff-display);
+    font-size:1.3rem; font-weight:800;
+    color:var(--primary);
+    transition: color var(--t-slow);
+    display:flex; align-items:center; gap:.5rem;
+  }
+  [data-theme="dark"] .nav-logo { color:var(--text); }
+  .nav-logo-dot {
+    width:8px; height:8px;
+    background:var(--accent);
+    border-radius:50%;
+    box-shadow:0 0 8px var(--glow);
+  }
+  .nav-links {
+    display:flex; gap:1.75rem; align-items:center;
+  }
+  .nav-links a {
+    font-size:.82rem; font-weight:500;
+    color:var(--text-soft);
+    position:relative; padding:.25rem 0;
+    transition:color var(--t);
+  }
+  .nav-links a::after {
+    content:''; position:absolute;
+    bottom:-2px; left:0;
+    width:0; height:1.5px;
+    background:var(--accent);
+    transition:width var(--t);
+  }
+  .nav-links a:hover,.nav-links a.active { color:var(--accent); }
+  .nav-links a:hover::after,.nav-links a.active::after { width:100%; }
+
+  .nav-controls { display:flex; align-items:center; gap:.65rem; }
+
+  /* Language toggle */
+  .lang-toggle {
+    display:flex; align-items:center;
+    background:var(--surface2);
+    border:1px solid var(--border);
+    border-radius:100px;
+    padding:.2rem;
+    gap:.1rem;
+    transition:all var(--t-slow);
+  }
+  .lang-btn {
+    padding:.28rem .65rem;
+    font-size:.74rem; font-weight:600;
+    border:none; background:transparent;
+    color:var(--text-dim);
+    border-radius:100px;
+    transition:all var(--t);
+    font-family:var(--ff-mono);
+    letter-spacing:.05em;
+  }
+  .lang-btn.active {
+    background:var(--accent);
+    color:#0F172A;
+    box-shadow:0 2px 8px var(--glow);
+  }
+
+  /* Theme toggle */
+  .theme-toggle {
+    width:36px; height:36px;
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    background:var(--surface2);
+    color:var(--text-soft);
+    display:flex; align-items:center; justify-content:center;
+    font-size:.9rem;
+    transition:all var(--t);
+  }
+  .theme-toggle:hover { border-color:var(--accent); color:var(--accent); }
+
+  /* Hamburger */
+  .hamburger {
+    display:none; flex-direction:column;
+    gap:4.5px; background:none; border:none; padding:6px;
+  }
+  .hamburger span {
+    display:block; width:22px; height:1.5px;
+    background:var(--text); border-radius:2px;
+    transition:all var(--t);
+  }
+  .hamburger.open span:nth-child(1) { transform:translateY(6px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity:0; }
+  .hamburger.open span:nth-child(3) { transform:translateY(-6px) rotate(-45deg); }
+
+  /* Mobile menu */
+  .mob-menu {
+    display:none; position:fixed;
+    inset:calc(var(--nav-h) + 47px) 0 0;
+    background:var(--surface);
+    flex-direction:column; align-items:center;
+    justify-content:center; gap:2.25rem;
+    z-index:998;
+    border-top:1px solid var(--border);
+  }
+  .mob-menu.open { display:flex; }
+  .mob-menu a {
+    font-family:var(--ff-display);
+    font-size:1.8rem; font-weight:700;
+    color:var(--primary);
+    transition:color var(--t);
+  }
+  [data-theme="dark"] .mob-menu a { color:var(--text); }
+  .mob-menu a:hover { color:var(--accent); }
+
+  /* ─────────────────────────────
+     HERO
+  ───────────────────────────── */
+  #hero {
+    min-height:calc(100vh - var(--nav-h) - 47px);
+    display:flex; align-items:center;
+    position:relative; overflow:hidden;
+    padding-block:4rem;
+    background:var(--background);
+    transition:background var(--t-slow);
+  }
+
+  /* Geometric background mesh */
+  .hero-mesh {
+    position:absolute; inset:0; pointer-events:none;
+    overflow:hidden;
+  }
+  .hero-mesh svg {
+    position:absolute;
+    opacity:.045;
+    transition:opacity var(--t-slow);
+  }
+  [data-theme="dark"] .hero-mesh svg { opacity:.07; }
+  .mesh-1 { top:-10%; right:-5%; width:65%; }
+  .mesh-2 { bottom:-20%; left:-8%; width:55%; }
+
+  /* Accent line */
+  .hero-accent-line {
+    position:absolute;
+    top:0; left:0; right:0; height:3px;
+    background:linear-gradient(90deg, var(--accent), var(--accent3), transparent);
+  }
+
+  .hero-grid {
+    display:grid;
+    grid-template-columns:1.1fr 0.9fr;
+    gap:4rem; align-items:center;
+    position:relative; z-index:1;
+  }
+
+  .hero-badge {
+    display:inline-flex; align-items:center; gap:.6rem;
+    padding:.4rem .9rem;
+    background:rgba(56,189,248,0.1);
+    border:1px solid rgba(56,189,248,0.25);
+    border-radius:100px;
+    font-size:.72rem; font-weight:600;
+    color:var(--accent);
+    font-family:var(--ff-mono);
+    letter-spacing:.08em;
+    margin-bottom:1.5rem;
+    opacity:0; animation:fadeIn .7s .1s forwards;
+  }
+  .hero-badge i { font-size:.8rem; }
+
+  .hero-name {
+    font-family:var(--ff-display);
+    font-size:clamp(3.2rem,7vw,5.5rem);
+    font-weight:800; line-height:.95;
+    color:var(--primary);
+    margin-bottom:.75rem;
+    opacity:0; animation:fadeIn .7s .25s forwards;
+    transition:color var(--t-slow);
+  }
+  [data-theme="dark"] .hero-name { color:var(--text); }
+  .hero-name .accent { color:var(--accent); }
+
+  .hero-role {
+    font-size:clamp(.95rem,1.8vw,1.15rem);
+    color:var(--text-soft);
+    font-weight:400;
+    margin-bottom:1.5rem;
+    opacity:0; animation:fadeIn .7s .4s forwards;
+    line-height:1.5;
+  }
+  .hero-role strong { color:var(--text); font-weight:600; }
+
+  .hero-bio {
+    font-size:1rem; line-height:1.8;
+    color:var(--text-soft);
+    max-width:520px;
+    margin-bottom:2rem;
+    opacity:0; animation:fadeIn .7s .55s forwards;
+  }
+
+  .hero-btns {
+    display:flex; gap:.85rem; flex-wrap:wrap;
+    margin-bottom:2.5rem;
+    opacity:0; animation:fadeIn .7s .7s forwards;
+  }
+
+  /* CV dropdown */
+  .cv-dropdown { position:relative; }
+  .cv-dropdown-menu {
+    position:absolute; top:calc(100% + .5rem); left:0;
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    box-shadow:0 12px 40px var(--shadow-md);
+    min-width:220px;
+    overflow:hidden;
+    opacity:0; pointer-events:none;
+    transform:translateY(-8px);
+    transition:all var(--t);
+    z-index:100;
+  }
+  [dir="rtl"] .cv-dropdown-menu { left:auto; right:0; }
+  .cv-dropdown:hover .cv-dropdown-menu,
+  .cv-dropdown-menu.open {
+    opacity:1; pointer-events:all; transform:none;
+  }
+  .cv-dropdown-item {
+    display:flex; align-items:center; gap:.75rem;
+    padding:.85rem 1.1rem;
+    font-size:.84rem; font-weight:500;
+    color:var(--text);
+    transition:all var(--t);
+    border-bottom:1px solid var(--border);
+  }
+  .cv-dropdown-item:last-child { border-bottom:none; }
+  .cv-dropdown-item:hover { background:var(--surface2); color:var(--accent); }
+  .cv-dropdown-item i { width:16px; color:var(--accent); }
+
+  /* Hero stats */
+  .hero-stats {
+    display:flex; gap:2rem; flex-wrap:wrap;
+    opacity:0; animation:fadeIn .7s .85s forwards;
+  }
+  .hero-stat { text-align:center; }
+  .hero-stat strong {
+    display:block;
+    font-family:var(--ff-display);
+    font-size:2.2rem; font-weight:800;
+    color:var(--primary);
+    line-height:1;
+    transition:color var(--t-slow);
+  }
+  [data-theme="dark"] .hero-stat strong { color:var(--text); }
+  .hero-stat strong span { color:var(--accent); }
+  .hero-stat small {
+    font-size:.72rem; color:var(--text-dim);
+    text-transform:uppercase; letter-spacing:.1em;
+    font-family:var(--ff-mono);
+  }
+
+  /* Hero right panel */
+  .hero-panel {
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:var(--radius-lg);
+    overflow:hidden;
+    box-shadow:0 20px 60px var(--shadow-md);
+    opacity:0; animation:slideIn .9s .3s forwards;
+    transition:background var(--t-slow), border-color var(--t-slow);
+  }
+  .hero-panel-header {
+    background:var(--secondary);
+    padding:1rem 1.25rem;
+    display:flex; align-items:center; gap:.5rem;
+    transition:background var(--t-slow);
+  }
+  [data-theme="dark"] .hero-panel-header { background:#000b18; }
+  .hero-panel-dot {
+    width:10px; height:10px; border-radius:50%;
+  }
+  .d-red  { background:#FF5F57; }
+  .d-yel  { background:#FEBC2E; }
+  .d-grn  { background:#28C840; }
+  .hero-panel-title {
+    font-family:var(--ff-mono);
+    font-size:.72rem; color:rgba(255,255,255,0.5);
+    margin-left:.5rem;
+  }
+  .hero-panel-body { padding:1.25rem; }
+  .code-line {
+    font-family:var(--ff-mono);
+    font-size:.8rem; line-height:1.9;
+    color:var(--text-soft);
+  }
+  .code-line .kw  { color:#C792EA; }
+  .code-line .fn  { color:#82AAFF; }
+  .code-line .str { color:#C3E88D; }
+  .code-line .num { color:#F78C6C; }
+  .code-line .cm  { color:var(--text-dim); }
+  .code-cursor {
+    display:inline-block;
+    width:8px; height:14px;
+    background:var(--accent);
+    animation:blink 1.1s infinite;
+    vertical-align:middle;
+    margin-left:2px;
+  }
+
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+  @keyframes fadeIn { from{opacity:0;transform:translateY(18px)} to{opacity:1;transform:none} }
+  @keyframes slideIn { from{opacity:0;transform:translateX(30px)} to{opacity:1;transform:none} }
+
+  /* ─────────────────────────────
+     ABOUT
+  ───────────────────────────── */
+  #about { background:var(--surface); transition:background var(--t-slow); }
+  .about-grid {
+    display:grid;
+    grid-template-columns:1fr 1.3fr;
+    gap:4.5rem; align-items:start;
+  }
+  .about-card {
+    background:var(--background);
+    border:1px solid var(--border);
+    border-radius:var(--radius-lg);
+    padding:2.25rem;
+    transition:all var(--t-slow);
+  }
+  .about-card-head {
+    display:flex; align-items:center; gap:1rem;
+    margin-bottom:1.75rem;
+  }
+  .about-avatar {
+    width:64px; height:64px;
+    background:linear-gradient(135deg,var(--accent),var(--accent3));
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-family:var(--ff-display);
+    font-size:1.6rem; font-weight:800; color:#0F172A;
+    flex-shrink:0;
+  }
+  .about-name { font-family:var(--ff-display); font-size:1.25rem; font-weight:800; color:var(--primary); }
+  [data-theme="dark"] .about-name { color:var(--text); }
+  .about-role { font-size:.82rem; color:var(--text-soft); margin-top:.15rem; }
+  .about-divider { height:1px; background:var(--border); margin:1.25rem 0; }
+  .info-row {
+    display:flex; align-items:center; gap:.75rem;
+    font-size:.84rem; color:var(--text-soft);
+    margin-bottom:.7rem;
+  }
+  .info-row i { color:var(--accent); width:16px; text-align:center; flex-shrink:0; }
+  .info-row a:hover { color:var(--accent); }
+  .about-text p { font-size:.98rem; line-height:1.85; color:var(--text-soft); margin-bottom:1rem; }
+  .tag-cloud { display:flex; flex-wrap:wrap; gap:.5rem; margin-top:1.5rem; }
+  .tag {
+    padding:.3rem .8rem;
+    background:var(--surface2);
+    border:1px solid var(--border);
+    border-radius:100px;
+    font-size:.76rem; font-weight:500;
+    color:var(--text-soft);
+    transition:all var(--t);
+  }
+  .tag:hover { background:var(--accent); color:#0F172A; border-color:var(--accent); }
+
+  /* ─────────────────────────────
+     SKILLS
+  ───────────────────────────── */
+  #skills { background:var(--background); transition:background var(--t-slow); }
+  .skills-header {
+    display:flex; justify-content:space-between;
+    align-items:flex-end; margin-bottom:3rem;
+    flex-wrap:wrap; gap:1rem;
+  }
+  .skill-categories {
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:1.5rem;
+  }
+  .skill-cat {
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:var(--radius-lg);
+    padding:1.75rem;
+    transition:all var(--t-slow);
+  }
+  .skill-cat:hover { border-color:rgba(56,189,248,.35); box-shadow:0 8px 32px var(--shadow); }
+  .skill-cat-icon {
+    width:44px; height:44px;
+    background:rgba(56,189,248,.1);
+    border:1px solid rgba(56,189,248,.2);
+    border-radius:10px;
+    display:flex; align-items:center; justify-content:center;
+    font-size:1.1rem; color:var(--accent);
+    margin-bottom:1rem;
+  }
+  .skill-cat h3 {
+    font-family:var(--ff-display);
+    font-size:1rem; font-weight:700;
+    color:var(--primary); margin-bottom:1.1rem;
+    transition:color var(--t-slow);
+  }
+  [data-theme="dark"] .skill-cat h3 { color:var(--text); }
+  .skill-tags { display:flex; flex-wrap:wrap; gap:.45rem; }
+  .skill-tag {
+    display:inline-flex; align-items:center; gap:.4rem;
+    padding:.32rem .8rem;
+    background:var(--background);
+    border:1px solid var(--border);
+    border-radius:100px;
+    font-size:.77rem; font-weight:500;
+    color:var(--text-soft);
+    transition:all var(--t);
+  }
+  .skill-tag i { font-size:.68rem; color:var(--accent); }
+  .skill-tag:hover { background:var(--accent); color:#0F172A; border-color:var(--accent); }
+  .skill-tag:hover i { color:#0F172A; }
+
+  /* Proficiency bars */
+  .prof-list { display:flex; flex-direction:column; gap:.85rem; margin-top:.5rem; }
+  .prof-item {}
+  .prof-label {
+    display:flex; justify-content:space-between;
+    font-size:.8rem; color:var(--text-soft); margin-bottom:.35rem;
+    font-weight:500;
+  }
+  .prof-track {
+    height:5px; background:var(--surface2);
+    border-radius:100px; overflow:hidden;
+  }
+  .prof-fill {
+    height:100%; width:0; border-radius:100px;
+    background:linear-gradient(90deg,var(--accent),var(--accent3));
+    transition:width 1.2s cubic-bezier(.4,0,.2,1);
+  }
+
+  /* ─────────────────────────────
+     EXPERIENCE
+  ───────────────────────────── */
+  #experience { background:var(--surface); transition:background var(--t-slow); }
+  .timeline { position:relative; margin-top:3rem; }
+  .timeline::before {
+    content:''; position:absolute;
+    left:18px; top:0; bottom:0;
+    width:2px;
+    background:linear-gradient(to bottom,var(--accent),rgba(56,189,248,.1));
+  }
+  .t-item {
+    padding-left:54px; position:relative;
+    margin-bottom:2.25rem;
+  }
+  .t-item:last-child { margin-bottom:0; }
+  .t-dot {
+    position:absolute; left:6px; top:8px;
+    width:26px; height:26px;
+    background:var(--surface);
+    border:2px solid var(--accent);
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-size:.58rem; color:var(--accent);
+    transition:all var(--t);
+    z-index:1;
+  }
+  .t-item:hover .t-dot { background:var(--accent); color:#0F172A; transform:scale(1.2); }
+  .t-card {
+    background:var(--background);
+    border:1px solid var(--border);
+    border-radius:var(--radius-lg);
+    padding:1.65rem 1.75rem;
+    transition:all var(--t);
+  }
+  .t-item:hover .t-card {
+    border-color:rgba(56,189,248,.3);
+    box-shadow:0 8px 32px var(--shadow);
+  }
+  .t-head { margin-bottom:.75rem; }
+  .t-role {
+    font-family:var(--ff-display);
+    font-size:1.1rem; font-weight:700;
+    color:var(--primary);
+    transition:color var(--t-slow);
+  }
+  [data-theme="dark"] .t-role { color:var(--text); }
+  .t-meta {
+    display:flex; flex-wrap:wrap; align-items:center;
+    gap:.6rem; margin-top:.4rem;
+  }
+  .t-org {
+    font-size:.78rem; font-weight:600;
+    padding:.2rem .7rem;
+    background:rgba(56,189,248,.1);
+    border:1px solid rgba(56,189,248,.2);
+    border-radius:100px; color:var(--accent);
+  }
+  .t-date {
+    font-size:.74rem; color:var(--text-dim);
+    display:flex; align-items:center; gap:.3rem;
+    font-family:var(--ff-mono);
+  }
+  .t-body { font-size:.9rem; line-height:1.75; color:var(--text-soft); margin-bottom:.65rem; }
+  .t-list { display:flex; flex-direction:column; gap:.35rem; }
+  .t-list li {
+    font-size:.86rem; line-height:1.65; color:var(--text-soft);
+    padding-left:1rem; position:relative;
+  }
+  .t-list li::before {
+    content:'▸'; position:absolute; left:0;
+    color:var(--accent); font-size:.62rem; top:.28em;
+  }
+  [dir="rtl"] .t-list li { padding-left:0; padding-right:1rem; }
+  [dir="rtl"] .t-list li::before { left:auto; right:0; }
+
+  /* Freelance */
+  .fl-grid {
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:1.25rem; margin-top:2.5rem;
+  }
+  .fl-card {
+    background:var(--background);
+    border:1px solid var(--border);
+    border-radius:var(--radius-lg); padding:1.5rem;
+    transition:all var(--t);
+  }
+  .fl-card:hover { border-color:rgba(56,189,248,.35); transform:translateY(-3px); box-shadow:0 8px 24px var(--shadow); }
+  .fl-year { font-family:var(--ff-mono); font-size:.7rem; color:var(--accent); font-weight:600; letter-spacing:.1em; text-transform:uppercase; margin-bottom:.6rem; }
+  .fl-card h4 { font-family:var(--ff-display); font-size:1rem; font-weight:700; color:var(--primary); margin-bottom:.55rem; line-height:1.3; transition:color var(--t-slow); }
+  [data-theme="dark"] .fl-card h4 { color:var(--text); }
+  .fl-card p { font-size:.84rem; line-height:1.7; color:var(--text-soft); }
+
+  /* ─────────────────────────────
+     EDUCATION & CERTS
+  ───────────────────────────── */
+  #education { background:var(--background); transition:background var(--t-slow); }
+  .edu-grid { display:grid; grid-template-columns:1fr 1fr; gap:3rem; margin-top:3rem; }
+  .block-h {
+    font-family:var(--ff-display);
+    font-size:1.25rem; font-weight:700;
+    color:var(--primary); margin-bottom:1.5rem;
+    padding-bottom:.75rem; border-bottom:1px solid var(--border);
+    display:flex; align-items:center; gap:.65rem;
+    transition:color var(--t-slow);
+  }
+  [data-theme="dark"] .block-h { color:var(--text); }
+  .block-h i { color:var(--accent); font-size:.95rem; }
+  .edu-entry {
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:var(--radius-lg); padding:1.4rem;
+    margin-bottom:1rem; transition:all var(--t);
+  }
+  .edu-entry:hover { border-color:rgba(56,189,248,.3); }
+  .edu-entry .deg { font-family:var(--ff-display); font-size:1rem; font-weight:700; color:var(--primary); margin-bottom:.25rem; transition:color var(--t-slow); }
+  [data-theme="dark"] .edu-entry .deg { color:var(--text); }
+  .edu-entry .uni { font-size:.8rem; color:var(--accent); margin-bottom:.35rem; }
+  .edu-entry .edate { font-family:var(--ff-mono); font-size:.72rem; color:var(--text-dim); }
+  .edu-entry p { font-size:.82rem; color:var(--text-soft); margin-top:.4rem; line-height:1.6; }
+  .cert-list { display:flex; flex-direction:column; gap:.9rem; }
+  .cert-item {
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:var(--radius-lg); padding:1.1rem 1.4rem;
+    display:flex; gap:.9rem; align-items:flex-start;
+    transition:all var(--t);
+  }
+  .cert-item:hover { border-color:rgba(56,189,248,.3); transform:translateX(4px); }
+  [dir="rtl"] .cert-item:hover { transform:translateX(-4px); }
+  .cert-ico {
+    width:38px; height:38px; flex-shrink:0;
+    background:rgba(56,189,248,.1);
+    border:1px solid rgba(56,189,248,.2);
+    border-radius:8px;
+    display:flex; align-items:center; justify-content:center;
+    font-size:.95rem; color:var(--accent);
+  }
+  .cert-name { font-size:.88rem; font-weight:600; color:var(--primary); margin-bottom:.15rem; transition:color var(--t-slow); }
+  [data-theme="dark"] .cert-name { color:var(--text); }
+  .cert-by { font-size:.75rem; color:var(--text-dim); }
+  .cert-date { font-family:var(--ff-mono); font-size:.7rem; color:var(--accent); margin-top:.2rem; }
+
+  /* ─────────────────────────────
+     CONTACT
+  ───────────────────────────── */
+  #contact { background:var(--background); transition:background var(--t-slow); }
+  .contact-grid {
+    display:grid;
+    grid-template-columns:1fr 1.1fr;
+    gap:4rem; align-items:start;
+    margin-top:3rem;
+  }
+  .contact-intro p { font-size:.98rem; line-height:1.8; color:var(--text-soft); margin-bottom:2.5rem; }
+  .c-links { display:flex; flex-direction:column; gap:1.1rem; }
+  .c-link {
+    display:flex; align-items:center; gap:1rem;
+    transition:transform var(--t);
+  }
+  .c-link:hover { transform:translateX(5px); }
+  [dir="rtl"] .c-link:hover { transform:translateX(-5px); }
+  .c-ico {
+    width:46px; height:46px; flex-shrink:0;
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:10px;
+    display:flex; align-items:center; justify-content:center;
+    font-size:1rem; color:var(--accent);
+    transition:all var(--t);
+  }
+  .c-link:hover .c-ico { background:var(--accent); color:#0F172A; border-color:var(--accent); }
+  .c-txt strong { display:block; font-size:.7rem; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:var(--text-dim); font-family:var(--ff-mono); margin-bottom:.15rem; }
+  .c-txt span { font-size:.9rem; color:var(--text); }
+  .contact-form { display:flex; flex-direction:column; gap:.9rem; }
+  .form-row { display:grid; grid-template-columns:1fr 1fr; gap:.9rem; }
+  .fg { display:flex; flex-direction:column; gap:.35rem; }
+  .fg label { font-size:.72rem; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:var(--text-dim); font-family:var(--ff-mono); }
+  .fg input,.fg textarea,.fg select {
+    padding:.75rem .95rem;
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    font-family:var(--ff-body);
+    font-size:.9rem; color:var(--text);
+    outline:none; resize:vertical;
+    transition:all var(--t);
+    -webkit-appearance:none;
+  }
+  .fg input:focus,.fg textarea:focus,.fg select:focus {
+    border-color:var(--accent);
+    box-shadow:0 0 0 3px var(--glow);
+  }
+  .fg input::placeholder,.fg textarea::placeholder { color:var(--text-dim); }
+
+  /* ─────────────────────────────
+     FOOTER
+  ───────────────────────────── */
+  footer {
+    background:var(--secondary);
+    padding-block:2.25rem;
+    transition:background var(--t-slow);
+  }
+  [data-theme="dark"] footer { background:#000b18; }
+  .footer-inner {
+    display:flex; align-items:center;
+    justify-content:space-between; flex-wrap:wrap; gap:1.25rem;
+  }
+  .footer-logo { font-family:var(--ff-display); font-size:1.3rem; font-weight:800; color:white; }
+  .footer-logo span { color:var(--accent); }
+  .footer-copy { font-size:.78rem; color:rgba(255,255,255,.4); font-family:var(--ff-mono); }
+  .footer-soc { display:flex; gap:.65rem; }
+  .footer-soc a {
+    width:34px; height:34px;
+    border:1px solid rgba(255,255,255,.12); border-radius:8px;
+    display:flex; align-items:center; justify-content:center;
+    font-size:.82rem; color:rgba(255,255,255,.45);
+    transition:all var(--t);
+  }
+  .footer-soc a:hover { border-color:var(--accent); color:var(--accent); transform:translateY(-2px); }
+
+  /* ─────────────────────────────
+     RESPONSIVE
+  ───────────────────────────── */
+  @media(max-width:960px){
+    .hero-grid { grid-template-columns:1fr; }
+    .hero-panel { display:none; }
+    .about-grid,.contact-grid,.edu-grid { grid-template-columns:1fr; gap:2.5rem; }
+    .nav-links { display:none; }
+    .hamburger { display:flex; }
+  }
+  @media(max-width:580px){
+    .form-row { grid-template-columns:1fr; }
+    .hero-btns { flex-direction:column; }
+    .btn { justify-content:center; }
+    .timeline::before { left:12px; }
+    .t-item { padding-left:44px; }
+    .t-dot { left:0; }
+    .hero-stats { gap:1.25rem; }
+  }
+
+  /* Print */
+  @media print { #navbar,#topbar,.hero-panel,footer { display:none; } }
   </style>
 </head>
 <body>
 
-<!-- NAVBAR -->
-<nav id="nav">
-  <div class="container nav-inner">
-    <a href="#hero" class="nav-logo">Haider<span>.</span></a>
-    <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#education">Education</a></li>
-      <li><a href="#gallery">Gallery</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-    <button class="hamburger" id="ham"><span></span><span></span><span></span></button>
+<!-- ═══════════════════════════════════════════════════════
+     TOP BAR
+═══════════════════════════════════════════════════════ -->
+<div id="topbar">
+  <div class="container topbar-inner">
+    <div class="topbar-left">
+      <span><i class="fa-solid fa-location-dot"></i> <span data-t="location">Port Sudan, Sudan</span></span>
+      <span><i class="fa-solid fa-envelope"></i> haidaraldaw010@gmail.com</span>
+    </div>
+    <div class="topbar-left">
+      <span><i class="fa-brands fa-linkedin"></i> <a href="https://www.linkedin.com/in/haidereldaw" target="_blank" style="color:inherit">linkedin.com/in/haidereldaw</a></span>
+    </div>
   </div>
-</nav>
-<div class="mob-menu" id="mob">
-  <a href="#about"      onclick="closeMob()">About</a>
-  <a href="#skills"     onclick="closeMob()">Skills</a>
-  <a href="#experience" onclick="closeMob()">Experience</a>
-  <a href="#education"  onclick="closeMob()">Education</a>
-  <a href="#gallery"    onclick="closeMob()">Gallery</a>
-  <a href="#contact"    onclick="closeMob()">Contact</a>
 </div>
 
-<!-- HERO -->
-<section id="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-coord c1">15°33'N 032°33'E</div>
-  <div class="hero-coord c2">19°37'N 037°13'E</div>
-  <div class="hero-coord c3">SRTM · Sentinel-2 · GEE</div>
-  <div class="hero-coord c4">QGIS · ArcGIS · Python</div>
-  <div class="container">
-    <div class="hero-content">
-      <div class="hero-eyebrow"><i class="fa-solid fa-satellite-dish"></i> Sudan · Port Sudan</div>
-      <h1 class="hero-name">Haider<span class="last">Eldaw</span></h1>
-      <p class="hero-role"><strong>GIS Analyst</strong> &amp; Program Data Management Officer</p>
-      <p class="hero-bio">5+ years turning satellite imagery, spatial data, and field surveys into geographic intelligence that drives humanitarian response, public health, and environmental decision-making across Sudan.</p>
-      <div class="hero-chips">
-        <span class="chip">Spatial Analysis</span>
-        <span class="chip">Remote Sensing</span>
-        <span class="chip">MEAL Systems</span>
-        <span class="chip">Google Earth Engine</span>
-        <span class="chip">Humanitarian Data</span>
+<!-- ═══════════════════════════════════════════════════════
+     NAVBAR
+═══════════════════════════════════════════════════════ -->
+<nav id="navbar">
+  <div class="container nav-inner">
+    <a href="#hero" class="nav-logo">
+      <div class="nav-logo-dot"></div>
+      Haider<span style="color:var(--accent)">.</span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about"      data-t="nav_about">About</a></li>
+      <li><a href="#skills"     data-t="nav_skills">Skills</a></li>
+      <li><a href="#experience" data-t="nav_exp">Experience</a></li>
+      <li><a href="#education"  data-t="nav_edu">Education</a></li>
+      <li><a href="#gallery"    data-t="nav_gallery">Gallery</a></li>
+      <li><a href="#contact"    data-t="nav_contact">Contact</a></li>
+    </ul>
+    <div class="nav-controls">
+      <!-- Language toggle -->
+      <div class="lang-toggle">
+        <button class="lang-btn active" id="btnEN" onclick="setLang('en')">EN</button>
+        <button class="lang-btn"        id="btnAR" onclick="setLang('ar')">AR</button>
       </div>
-      <div class="hero-btns">
-        <a href="#experience" class="btn btn-gold"><i class="fa-solid fa-briefcase"></i> View Experience</a>
-        <a href="#gallery" class="btn btn-ghost"><i class="fa-solid fa-images"></i> Work Gallery</a>
-        <a href="mailto:haidaraldaw010@gmail.com" class="btn btn-ghost"><i class="fa-solid fa-envelope"></i> Email Me</a>
+      <!-- Theme toggle -->
+      <button class="theme-toggle" id="themeBtn" onclick="toggleTheme()" title="Toggle theme">
+        <i class="fa-solid fa-moon" id="themeIcon"></i>
+      </button>
+      <!-- Hamburger -->
+      <button class="hamburger" id="ham"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile menu -->
+<div class="mob-menu" id="mob">
+  <a href="#about"      onclick="closeMob()" data-t="nav_about">About</a>
+  <a href="#skills"     onclick="closeMob()" data-t="nav_skills">Skills</a>
+  <a href="#experience" onclick="closeMob()" data-t="nav_exp">Experience</a>
+  <a href="#education"  onclick="closeMob()" data-t="nav_edu">Education</a>
+  <a href="#gallery"    onclick="closeMob()" data-t="nav_gallery">Gallery</a>
+  <a href="#contact"    onclick="closeMob()" data-t="nav_contact">Contact</a>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     HERO
+═══════════════════════════════════════════════════════ -->
+<section id="hero">
+  <div class="hero-mesh">
+    <!-- Geometric SVG mesh -->
+    <svg class="mesh-1" viewBox="0 0 600 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="300" cy="300" r="250" stroke="#38BDF8" stroke-width="1"/>
+      <circle cx="300" cy="300" r="180" stroke="#38BDF8" stroke-width="1"/>
+      <circle cx="300" cy="300" r="100" stroke="#38BDF8" stroke-width="1"/>
+      <line x1="50" y1="300" x2="550" y2="300" stroke="#38BDF8" stroke-width="1"/>
+      <line x1="300" y1="50" x2="300" y2="550" stroke="#38BDF8" stroke-width="1"/>
+      <line x1="125" y1="125" x2="475" y2="475" stroke="#38BDF8" stroke-width="1"/>
+      <line x1="475" y1="125" x2="125" y2="475" stroke="#38BDF8" stroke-width="1"/>
+    </svg>
+    <svg class="mesh-2" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="50" y="50" width="400" height="400" stroke="#38BDF8" stroke-width="1"/>
+      <rect x="100" y="100" width="300" height="300" stroke="#38BDF8" stroke-width="1"/>
+      <rect x="150" y="150" width="200" height="200" stroke="#38BDF8" stroke-width="1"/>
+      <rect x="200" y="200" width="100" height="100" stroke="#38BDF8" stroke-width="1"/>
+    </svg>
+  </div>
+  <div class="hero-accent-line"></div>
+
+  <div class="container">
+    <div class="hero-grid">
+      <!-- Left -->
+      <div>
+        <div class="hero-badge">
+          <i class="fa-solid fa-satellite-dish"></i>
+          <span data-t="hero_badge">GIS Analyst · Remote Sensing · Humanitarian Data</span>
+        </div>
+        <h1 class="hero-name">
+          Haider<br>
+          <span class="accent">Eldaw</span>
+        </h1>
+        <p class="hero-role">
+          <strong data-t="hero_title">GIS Analyst</strong>
+          <span data-t="hero_title2"> & Program Data Management Officer</span>
+        </p>
+        <p class="hero-bio" data-t="hero_bio">
+          5+ years transforming satellite imagery, spatial data, and field surveys into
+          geographic intelligence that drives humanitarian response, public health, and
+          environmental decision-making across Sudan.
+        </p>
+        <div class="hero-btns">
+          <!-- CV Dropdown -->
+          <div class="cv-dropdown">
+            <button class="btn btn-accent" id="cvBtn">
+              <i class="fa-solid fa-download"></i>
+              <span data-t="btn_cv">Download CV</span>
+              <i class="fa-solid fa-chevron-down" style="font-size:.7rem;margin-left:.2rem"></i>
+            </button>
+            <div class="cv-dropdown-menu" id="cvMenu">
+              <a href="cv_haider_eldaw_en.pdf" download class="cv-dropdown-item">
+                <i class="fa-solid fa-file-pdf"></i>
+                <span>Download CV — English</span>
+              </a>
+              <a href="cv_haider_eldaw_ar.pdf" download class="cv-dropdown-item">
+                <i class="fa-solid fa-file-pdf"></i>
+                <span>تحميل السيرة الذاتية — عربي</span>
+              </a>
+            </div>
+          </div>
+          <a href="#contact" class="btn btn-outline">
+            <i class="fa-solid fa-envelope"></i>
+            <span data-t="btn_contact">Contact</span>
+          </a>
+          <a href="#gallery" class="btn btn-outline">
+            <i class="fa-solid fa-images"></i>
+            <span data-t="btn_gallery">Work Gallery</span>
+          </a>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat"><strong>5<span>+</span></strong><small data-t="stat_years">Years Exp.</small></div>
+          <div class="hero-stat"><strong>4<span>+</span></strong><small data-t="stat_emp">Employers</small></div>
+          <div class="hero-stat"><strong>3</strong><small data-t="stat_free">Freelance</small></div>
+          <div class="hero-stat"><strong>5</strong><small data-t="stat_cert">Certs</small></div>
+        </div>
+      </div>
+
+      <!-- Right: code panel -->
+      <div class="hero-panel">
+        <div class="hero-panel-header">
+          <div class="hero-panel-dot d-red"></div>
+          <div class="hero-panel-dot d-yel"></div>
+          <div class="hero-panel-dot d-grn"></div>
+          <span class="hero-panel-title">haider_profile.py</span>
+        </div>
+        <div class="hero-panel-body">
+          <div class="code-line"><span class="cm"># GIS Analyst Profile</span></div>
+          <div class="code-line"><span class="kw">class</span> <span class="fn">HaiderEldaw</span>:</div>
+          <div class="code-line">&nbsp;&nbsp;<span class="fn">name</span> <span class="kw">=</span> <span class="str">"Haider Eldaw"</span></div>
+          <div class="code-line">&nbsp;&nbsp;<span class="fn">role</span> <span class="kw">=</span> <span class="str">"GIS Analyst"</span></div>
+          <div class="code-line">&nbsp;&nbsp;<span class="fn">location</span> <span class="kw">=</span> <span class="str">"Port Sudan 🇸🇩"</span></div>
+          <div class="code-line">&nbsp;&nbsp;<span class="fn">experience</span> <span class="kw">=</span> <span class="num">5</span><span class="cm"> # years</span></div>
+          <div class="code-line">&nbsp;</div>
+          <div class="code-line">&nbsp;&nbsp;<span class="fn">skills</span> <span class="kw">=</span> [</div>
+          <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="str">"QGIS"</span>, <span class="str">"ArcGIS"</span>,</div>
+          <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="str">"Google Earth Engine"</span>,</div>
+          <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="str">"Python"</span>, <span class="str">"KoboToolbox"</span>,</div>
+          <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="str">"Remote Sensing"</span></div>
+          <div class="code-line">&nbsp;&nbsp;]</div>
+          <div class="code-line">&nbsp;</div>
+          <div class="code-line">&nbsp;&nbsp;<span class="kw">def</span> <span class="fn">contact</span>(<span class="fn">self</span>):</div>
+          <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span> <span class="str">"haidaraldaw010@gmail.com"</span></div>
+          <div class="code-line">&nbsp;</div>
+          <div class="code-line"><span class="fn">he</span> <span class="kw">=</span> <span class="fn">HaiderEldaw</span>()</div>
+          <div class="code-line"><span class="fn">he</span>.<span class="fn">contact</span>() <span class="code-cursor"></span></div>
+        </div>
       </div>
     </div>
   </div>
-  <div class="hero-scroll">Scroll <i class="fa-solid fa-chevron-down"></i></div>
 </section>
 
-<!-- ABOUT -->
+<!-- ═══════════════════════════════════════════════════════
+     WORK GALLERY  (right after hero)
+     ✏️ To add your images: replace src="" with your file path
+        e.g. src="images/drought_map.jpg"
+═══════════════════════════════════════════════════════ -->
+<section id="gallery" style="background:var(--surface);transition:background var(--t-slow)">
+  <div class="container">
+    <p class="eyebrow reveal" data-t="gal_eyebrow">Visual Portfolio</p>
+    <h2 class="section-title reveal d1" data-t="gal_title">Work <span>Gallery</span></h2>
+    <p class="reveal d2" style="color:var(--text-soft);max-width:580px;margin-bottom:2.5rem;font-size:.97rem" data-t="gal_desc">
+      A visual showcase of maps, dashboards, remote sensing outputs, and field data systems. Replace each image src with your own files.
+    </p>
+
+    <!-- Upload notice -->
+    <div class="reveal" style="display:flex;align-items:flex-start;gap:.85rem;background:rgba(56,189,248,.07);border:1px solid rgba(56,189,248,.2);border-radius:var(--radius);padding:.95rem 1.15rem;margin-bottom:2.5rem;font-size:.85rem;color:var(--accent);line-height:1.6">
+      <i class="fa-solid fa-circle-info" style="margin-top:.15rem;flex-shrink:0"></i>
+      <span data-t="gal_notice"><strong>To add images:</strong> Open the HTML file, find each &lt;img src=""&gt; tag in the gallery section, and replace src="" with your image path (e.g. src="images/my_map.jpg"). Update the title and description for each card.</span>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:1.5rem">
+
+      <!-- CARD 1 -->
+      <div class="reveal" style="background:var(--background);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;transition:all var(--t)" onmouseenter="this.style.transform='translateY(-5px)';this.style.borderColor='rgba(56,189,248,.4)';this.style.boxShadow='0 16px 40px var(--shadow-md)'" onmouseleave="this.style.transform='';this.style.borderColor='';this.style.boxShadow=''">
+        <div style="position:relative;aspect-ratio:16/10;background:var(--surface2);overflow:hidden;display:flex;align-items:center;justify-content:center">
+          <img src="" alt="Drought Vulnerability Map" style="width:100%;height:100%;object-fit:cover;transition:transform .5s ease" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:.6rem;color:var(--text-dim);padding:2rem;text-align:center;width:100%">
+            <i class="fa-solid fa-map" style="font-size:2.2rem"></i>
+            <p style="font-size:.78rem;line-height:1.5">Add your image<br><code style="font-family:var(--ff-mono);font-size:.7rem;opacity:.7">src="images/drought_map.jpg"</code></p>
+          </div>
+          <span style="position:absolute;top:10px;left:10px;padding:.22rem .65rem;background:rgba(15,23,42,.85);border:1px solid rgba(56,189,248,.35);border-radius:100px;font-size:.66rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);backdrop-filter:blur(6px)">Remote Sensing</span>
+        </div>
+        <div style="padding:1.35rem">
+          <h3 style="font-family:var(--ff-display);font-size:1.05rem;font-weight:700;color:var(--primary);margin-bottom:.45rem;line-height:1.3;transition:color var(--t-slow)" data-t="gal1_h">Drought Vulnerability Map — Darfur</h3>
+          <p style="font-size:.83rem;line-height:1.7;color:var(--text-soft);margin-bottom:.9rem" data-t="gal1_p">Multi-temporal NDVI analysis using Landsat imagery to classify drought severity across agropastoral zones. Used in emergency response planning.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:.35rem">
+            <span style="font-size:.69rem;font-weight:600;padding:.18rem .58rem;border:1px solid rgba(56,189,248,.25);border-radius:100px;color:var(--accent)">GEE</span>
+            <span style="font-size:.69rem;font-weight:600;padding:.18rem .58rem;border:1px solid rgba(56,189,248,.25);border-radius:100px;color:var(--accent)">NDVI</span>
+            <span style="font-size:.69rem;font-weight:600;padding:.18rem .58rem;border:1px solid rgba(56,189,248,.25);border-radius:100px;color:var(--accent)">Landsat</span>
+            <span style="font-size:.69rem;font-weight:600;padding:.18rem .58rem;border:1px solid rgba(56,189,248,.25);border-radius:100px;color:var(--accent)">QGIS</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD 2 -->
+      <div class="reveal d1" style="background:var(--background);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;transition:all var(--t)" onmouseenter="this.style.transform='translateY(-5px)';this.style.borderColor='rgba(56,189,248,.4)';this.style.boxShadow='0 16px 40px var(--shadow-md)'" onmouseleave="this.style.transform='';this.style.borderColor='';this.style.boxShadow=''">
+        <div style="position:relative;aspect-ratio:16/10;background:var(--surface2);overflow:hidden;display:flex;align-items:center;justify-content:center">
+          <img src="" alt="Health Facility Map" style="width:100%;height:100%;object-fit:cover" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:.6rem;color:var(--text-dim);padding:2rem;text-align:center;width:100%">
+            <i class="fa-solid fa-heart-pulse" style="font-size:2.2rem"></i>
+            <p style="font-size:.78rem;line-height:1.5">Add your image<br><code style="font-family:var(--ff-mono);font-size:.7rem;opacity:.7">src="images/health_map.jpg"</code></p>
+          </div>
+          <span style="position:absolute;top:10px;left:10px;padding:.22rem .65rem;background:rgba(15,23,42,.85);border:1px solid rgba(56,189,248,.35);border-radius:100px;font-size:.66rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);backdrop-filter:blur(6px)">Public Health GIS</span>
+        </div>
+        <div style="padding:1.35rem">
+          <h3 style="font-family:var(--ff-display);font-size:1.05rem;font-weight:700;color:var(--primary);margin-bottom:.45rem;line-height:1.3;transition:color var(--t-slow)" data-t="gal2_h">Health Facility Coverage — Sudan</h3>
+          <p style="font-size:.83rem;line-height:1.7;color:var(--text-soft);margin-bottom:.9rem" data-t="gal2_p">Spatial analysis of health resource allocation and disease pattern mapping for Sudan's Health Ministry, identifying underserved areas for priority targeting.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:.35rem">
+            <span style="font-size:.69rem;font-weight:600;padding:.18rem .58rem;border:1px solid rgba(56,189,248,.25);border-radius:100px;color:var(--accent)">ArcGIS</span>
+            <span style="font-size:.69rem;font-weight:600;padding:.18rem .58rem;border:1px solid rgba(56,189,248,.25);border-radius:100px;color:var(--accent)">Spatial Analysis</span>
+            <span style="font-size:.69rem;font-weight:600;padding:.18rem .58rem;border:1px solid rgba(56,189,248,.25);border-radius:100px;color:var(--accent)">Health GIS</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD 3 -->
+      <div class="reveal d2" style="background:var(--background);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;transition:all var(--t)" onmouseenter="this.style.transform='translateY(-5px)';this.style.borderColor='rgba(56,189,248,.4)';this.style.boxShadow='0 16px 40px var(--shadow-md)'" onmouseleave="this.style.transform='';this.style.borderColor='';this.style.boxShadow=''">
+        <div style="position:relative;aspect-ratio:16/10;background:var(--surface2);overflow:hidden;display:flex;align-items:center;justify-content:center">
+          <img src="" alt="MEAL Dashboard" style="width:100%;height:100%;object-fit:cover" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:.6rem;color:var(--text-dim);padding:2rem;text-align:center;width:100%">
+            <i class="fa-solid fa-chart-bar" style="font-size:2.2rem"></i>
+            <p style="font-size:.78rem;line-height:1.5">Add your image<br><code style="font-family:var(--ff-mono);font-size:.7rem;opacity:.7">src="images/dashboard.png"</code></p>
+          </div>
+          <span style="position:absolute;top:10px;left:10px;padding:.22rem .65rem;background:rgba(15,23,42,.85);border:1px solid rgba(56,189,248,.35);border-radius:100px;font-size:.66rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);backdrop-filter:blur(6px)">Humanitarian Data</span>
+        </div>
+        <div style="padding:1.35rem">
+          <h3 style="font-family:var(--ff-display);font-size:1.05rem;font-weight:700;color:var(--primary);margin-bottom:.45rem;line-height:1.3;transition:color var(--t-slow)" data-t="gal3_h">PUI Program Monitoring Dashboard</h3>
+          <p style="font-size:.83rem;line-height:1.7;color:var(--text-soft);margin-bottom:.9rem" data-t="gal3_p">Real-time humanitarian program dashboard covering beneficiary registration, activity tracking, and geographic coverage for PUI Sudan's multi-sector response.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:.35rem">
+            <span style="font-size:.69rem;font-weight:600;padding:.18rem .58rem;border:1px solid rgba(56,189,248,.25);border-radius:100px;color:var(--accent)">KoboToolbox</span>
+            <span style="font-size:.69rem;font-weight:600;padding:.18rem .58rem;border:1px solid rgba(56,189,248,.25);border-radius:100px;color:var(--accent)">Power BI</span>
+            <span style="font-size:.69rem;font-weight:600;padding:.18rem .58rem;border:1px solid rgba(56,189,248,.25);border-radius:100px;color:var(--accent)">MEAL</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD 4 -->
+      <div class="reveal" style="background:var(--background);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;transition:all var(--t)" onmouseenter="this.style.transform='translateY(-5px)';this.style.borderColor='rgba(56,189,248,.4)';this.style.boxShadow='0 16px 40px var(--shadow-md)'" onmouseleave="this.style.transform='';this.style.borderColor='';this.style.boxShadow=''">
+        <div style="position:relative;aspect-ratio:16/10;background:var(--surface2);overflow:hidden;display:flex;align-items:center;justify-content:center">
+          <img src="" alt="Acacia Map" style="width:100%;height:100%;object-fit:cover" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:.6rem;color:var(--text-dim);padding:2rem;text-align:center;width:100%">
+            <i class="fa-solid fa-tree" style="font-size:2.2rem"></i>
+            <p style="font-size:.78rem;line-height:1.5">Add your image<br><code style="font-family:var(--ff-mono);font-size:.7rem;opacity:.7">src="images/acacia.jpg"</code></p>
+          </div>
+          <span style="position:absolute;top:10px;left:10px;padding:.22rem .65rem;background:rgba(15,23,42,.85);border:1px solid rgba(56,189,248,.35);border-radius:100px;font-size:.66rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);backdrop-filter:blur(6px)">Conservation</span>
+        </div>
+        <div style="padding:1.35rem">
+          <h3 style="font-family:var(--ff-display);font-size:1.05rem;font-weight:700;color:var(--primary);margin-bottom:.45rem;line-height:1.3;transition:color var(--t-slow)" data-t="gal4_h">Acacia Distribution — Saudi Arabia</h3>
+          <p style="font-size:.83rem;line-height:1.7;color:var(--text-soft);margin-bottom:.9rem" data-t="gal4_p">Geospatial mapping of Acacia species distribution across Saudi regions using remote sensing classification, supporting ecological conservation planning.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:.35rem">
+            <span style="font-size:.69rem;font-weight:600;padding:.18rem .58rem;border:1px solid rgba(56,189,248,.25);border-radius:100px;color:var(--accent)">ENVI</span>
+            <span style="font-size:.69rem;font-weight:600;padding:.18rem .58rem;border:1px solid rgba(56,189,248,.25);border-radius:100px;color:var(--accent)">ArcGIS</span>
+            <span style="font-size:.69rem;font-weight:600;padding:.18rem .58rem;border:1px solid rgba(56,189,248,.25);border-radius:100px;color:var(--accent)">Classification</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD 5 -->
+      <div class="reveal d1" style="background:var(--background);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;transition:all var(--t)" onmouseenter="this.style.transform='translateY(-5px)';this.style.borderColor='rgba(56,189,248,.4)';this.style.boxShadow='0 16px 40px var(--shadow-md)'" onmouseleave="this.style.transform='';this.style.borderColor='';this.style.boxShadow=''">
+        <div style="position:relative;aspect-ratio:16/10;background:var(--surface2);overflow:hidden;display:flex;align-items:center;justify-content:center">
+          <img src="" alt="Agricultural Change Detection" style="width:100%;height:100%;object-fit:cover" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:.6rem;color:var(--text-dim);padding:2rem;text-align:center;width:100%">
+            <i class="fa-solid fa-satellite" style="font-size:2.2rem"></i>
+            <p style="font-size:.78rem;line-height:1.5">Add your image<br><code style="font-family:var(--ff-mono);font-size:.7rem;opacity:.7">src="images/agri_conflict.jpg"</code></p>
+          </div>
+          <span style="position:absolute;top:10px;left:10px;padding:.22rem .65rem;background:rgba(15,23,42,.85);border:1px solid rgba(56,189,248,.35);border-radius:100px;font-size:.66rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);backdrop-filter:blur(6px)">Conflict Analysis</span>
+        </div>
+        <div style="padding:1.35rem">
+          <h3 style="font-family:var(--ff-display);font-size:1.05rem;font-weight:700;color:var(--primary);margin-bottom:.45rem;line-height:1.3;transition:color var(--t-slow)" data-t="gal5_h">War Impact on Sudan's Agricultural Land</h3>
+          <p style="font-size:.83rem;line-height:1.7;color:var(--text-soft);margin-bottom:.9rem" data-t="gal5_p">Multitemporal change detection using GEE and Python to quantify cultivated land loss caused by armed conflict, via Sentinel-2 time-series analysis.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:.35rem">
+            <span style="font-size:.69rem;font-weight:600;padding:.18rem .58rem;border:1px solid rgba(56,189,248,.25);border-radius:100px;color:var(--accent)">GEE</span>
+            <span style="font-size:.69rem;font-weight:600;padding:.18rem .58rem;border:1px solid rgba(56,189,248,.25);border-radius:100px;color:var(--accent)">Python</span>
+            <span style="font-size:.69rem;font-weight:600;padding:.18rem .58rem;border:1px solid rgba(56,189,248,.25);border-radius:100px;color:var(--accent)">Sentinel-2</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ADD MORE CARD -->
+      <div class="reveal d2" style="border:2px dashed var(--border);border-radius:var(--radius-lg);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.75rem;padding:2.5rem;color:var(--text-dim);text-align:center;min-height:240px;transition:all var(--t);cursor:default" onmouseenter="this.style.borderColor='rgba(56,189,248,.4)';this.style.color='var(--accent)'" onmouseleave="this.style.borderColor='';this.style.color=''">
+        <i class="fa-solid fa-plus" style="font-size:1.8rem"></i>
+        <span style="font-size:.84rem;line-height:1.5" data-t="gal_add">Add your own work here<br><small style="font-size:.75rem;opacity:.7">Copy a card block and replace the image src and text</small></span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     ABOUT
+═══════════════════════════════════════════════════════ -->
 <section id="about">
   <div class="container">
     <div class="about-grid">
+      <!-- Card -->
       <div class="reveal">
         <div class="about-card">
-          <div class="about-card-title">At a Glance</div>
-          <p>GIS professional with a Masters (all requirements completed) from Khartoum University and a strong track record across humanitarian NGOs, government, and private sector organizations in Sudan.</p>
-          <div class="stats-row">
-            <div class="stat"><strong>5+</strong><span>Years Exp.</span></div>
-            <div class="stat"><strong>4</strong><span>Employers</span></div>
-            <div class="stat"><strong>3</strong><span>Freelance</span></div>
-            <div class="stat"><strong>5</strong><span>Certs</span></div>
+          <div class="about-card-head">
+            <div class="about-avatar">HE</div>
+            <div>
+              <div class="about-name">Haider Eldaw</div>
+              <div class="about-role" data-t="hero_title">GIS Analyst &amp; Data Management Officer</div>
+            </div>
           </div>
-          <div class="cq">
-            <div class="cq-row"><i class="fa-solid fa-envelope"></i><a href="mailto:haidaraldaw010@gmail.com">haidaraldaw010@gmail.com</a></div>
-            <div class="cq-row"><i class="fa-solid fa-phone"></i><span>+249 923 292 330 / +249 905 678 185</span></div>
-            <div class="cq-row"><i class="fa-brands fa-linkedin"></i><a href="https://www.linkedin.com/in/haidereldaw" target="_blank">linkedin.com/in/haidereldaw</a></div>
-            <div class="cq-row"><i class="fa-solid fa-globe"></i><a href="https://haidereldaw.github.io/GIS-Analyst/" target="_blank">haidereldaw.github.io/GIS-Analyst</a></div>
-            <div class="cq-row"><i class="fa-solid fa-location-dot"></i><span>Sudan · Port Sudan</span></div>
+          <div class="about-divider"></div>
+          <div class="info-row"><i class="fa-solid fa-envelope"></i><a href="mailto:haidaraldaw010@gmail.com">haidaraldaw010@gmail.com</a></div>
+          <div class="info-row"><i class="fa-solid fa-phone"></i><span>+249 923 292 330</span></div>
+          <div class="info-row"><i class="fa-brands fa-linkedin"></i><a href="https://www.linkedin.com/in/haidereldaw" target="_blank">linkedin.com/in/haidereldaw</a></div>
+          <div class="info-row"><i class="fa-solid fa-globe"></i><a href="https://haidereldaw.github.io/GIS-Analyst/" target="_blank">haidereldaw.github.io</a></div>
+          <div class="info-row"><i class="fa-solid fa-location-dot"></i><span data-t="location">Port Sudan, Sudan</span></div>
+          <div class="about-divider"></div>
+          <!-- Quick stats -->
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:.25rem">
+            <div style="text-align:center;padding:.85rem;background:var(--surface2);border-radius:8px">
+              <div style="font-family:var(--ff-display);font-size:1.8rem;font-weight:800;color:var(--accent);line-height:1">5+</div>
+              <div style="font-size:.7rem;color:var(--text-dim);font-family:var(--ff-mono);text-transform:uppercase;letter-spacing:.08em;margin-top:.2rem" data-t="stat_years">Years Exp.</div>
+            </div>
+            <div style="text-align:center;padding:.85rem;background:var(--surface2);border-radius:8px">
+              <div style="font-family:var(--ff-display);font-size:1.8rem;font-weight:800;color:var(--accent);line-height:1">5</div>
+              <div style="font-size:.7rem;color:var(--text-dim);font-family:var(--ff-mono);text-transform:uppercase;letter-spacing:.08em;margin-top:.2rem" data-t="stat_cert">Certifications</div>
+            </div>
           </div>
         </div>
       </div>
+      <!-- Text -->
       <div class="about-text reveal d2">
-        <p class="eyebrow">About Me</p>
-        <h2 class="section-title">Mapping <span>Data</span> into<br><em>Decisions</em></h2>
-        <p>I specialize in geospatial analysis, remote sensing, and humanitarian data management. My work spans processing Landsat and Sentinel satellite imagery to designing full MEAL frameworks — always focused on producing insights that reach decision-makers.</p>
-        <p>I have contributed to public health surveillance at Sudan's Health Ministry, led distribution optimization at a private marketing company, supported urban planning at Karari Locality, and currently manage program data for PUI's humanitarian operations in Port Sudan, while also teaching GIS at Khartoum University.</p>
-        <p>Objective: leverage spatial intelligence in a dynamic organization to deliver geospatial analysis useful for complex humanitarian and environmental problems.</p>
+        <p class="eyebrow" data-t="about_eyebrow">About Me</p>
+        <h2 class="section-title" data-t="about_title">Mapping Data<br>into <span>Decisions</span></h2>
+        <p data-t="about_p1">I specialize in geospatial analysis, remote sensing, and humanitarian data management. My work spans processing Landsat and Sentinel satellite imagery to designing full MEAL frameworks — always focused on producing insights that reach decision-makers in the field.</p>
+        <p data-t="about_p2">I have contributed to public health surveillance at Sudan's Health Ministry, led distribution optimization at a private marketing company, supported urban planning at Karari Locality, and currently manage program data for PUI's humanitarian operations in Port Sudan — alongside teaching GIS at Khartoum University.</p>
+        <p data-t="about_p3">My objective: leverage spatial intelligence in a dynamic organization to deliver geospatial analysis useful for complex humanitarian and environmental problems.</p>
         <div class="tag-cloud">
-          <span class="tag">QGIS</span><span class="tag">ArcGIS Pro</span><span class="tag">Google Earth Engine</span>
-          <span class="tag">ENVI</span><span class="tag">ERDAS</span><span class="tag">Python</span>
-          <span class="tag">KoboToolbox</span><span class="tag">ODK</span><span class="tag">Power BI</span>
-          <span class="tag">MEAL</span><span class="tag">Remote Sensing</span><span class="tag">Cartography</span>
+          <span class="tag">QGIS</span><span class="tag">ArcGIS Pro</span>
+          <span class="tag">Google Earth Engine</span><span class="tag">ENVI</span>
+          <span class="tag">ERDAS</span><span class="tag">Python</span>
+          <span class="tag">KoboToolbox</span><span class="tag">ODK</span>
+          <span class="tag">Power BI</span><span class="tag">MEAL</span>
+          <span class="tag">Remote Sensing</span><span class="tag">Cartography</span>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SKILLS -->
+<!-- ═══════════════════════════════════════════════════════
+     SKILLS
+═══════════════════════════════════════════════════════ -->
 <section id="skills">
   <div class="container">
-    <p class="eyebrow reveal">Technical Expertise</p>
-    <h2 class="section-title reveal d1">Tools &amp; <span>Skills</span></h2>
-    <div class="skills-grid">
-      <div class="skill-card reveal">
-        <div class="skill-ico"><i class="fa-solid fa-map"></i></div>
-        <h3>GIS &amp; Remote Sensing</h3>
-        <div class="bar-list">
-          <div class="bar-item"><label><span>QGIS</span><span>95%</span></label><div class="bar-track"><div class="bar-fill" data-w="95"></div></div></div>
-          <div class="bar-item"><label><span>ArcGIS / ArcGIS Pro</span><span>90%</span></label><div class="bar-track"><div class="bar-fill" data-w="90"></div></div></div>
-          <div class="bar-item"><label><span>Google Earth Engine</span><span>82%</span></label><div class="bar-track"><div class="bar-fill" data-w="82"></div></div></div>
-          <div class="bar-item"><label><span>ENVI &amp; ERDAS</span><span>78%</span></label><div class="bar-track"><div class="bar-fill" data-w="78"></div></div></div>
-          <div class="bar-item"><label><span>Satellite Imagery Analysis</span><span>87%</span></label><div class="bar-track"><div class="bar-fill" data-w="87"></div></div></div>
+    <div class="skills-header">
+      <div>
+        <p class="eyebrow reveal" data-t="skills_eyebrow">Technical Arsenal</p>
+        <h2 class="section-title reveal d1" data-t="skills_title">Tools &amp; <span>Skills</span></h2>
+      </div>
+    </div>
+    <div class="skill-categories">
+      <!-- GIS -->
+      <div class="skill-cat reveal">
+        <div class="skill-cat-icon"><i class="fa-solid fa-map"></i></div>
+        <h3 data-t="skill_gis">GIS &amp; Remote Sensing</h3>
+        <div class="prof-list">
+          <div class="prof-item"><div class="prof-label"><span>QGIS</span><span>95%</span></div><div class="prof-track"><div class="prof-fill" data-w="95"></div></div></div>
+          <div class="prof-item"><div class="prof-label"><span>ArcGIS / ArcGIS Pro</span><span>90%</span></div><div class="prof-track"><div class="prof-fill" data-w="90"></div></div></div>
+          <div class="prof-item"><div class="prof-label"><span>Google Earth Engine</span><span>82%</span></div><div class="prof-track"><div class="prof-fill" data-w="82"></div></div></div>
+          <div class="prof-item"><div class="prof-label"><span>ENVI &amp; ERDAS</span><span>78%</span></div><div class="prof-track"><div class="prof-fill" data-w="78"></div></div></div>
+        </div>
+        <div class="skill-tags" style="margin-top:1.1rem">
+          <span class="skill-tag"><i class="fa-solid fa-check"></i>QGIS</span>
+          <span class="skill-tag"><i class="fa-solid fa-check"></i>ArcGIS</span>
+          <span class="skill-tag"><i class="fa-solid fa-check"></i>GEE</span>
+          <span class="skill-tag"><i class="fa-solid fa-check"></i>ENVI</span>
+          <span class="skill-tag"><i class="fa-solid fa-check"></i>ERDAS</span>
+          <span class="skill-tag"><i class="fa-solid fa-check"></i>Remote Sensing</span>
         </div>
       </div>
-      <div class="skill-card reveal d1">
-        <div class="skill-ico"><i class="fa-solid fa-code"></i></div>
-        <h3>Data &amp; Programming</h3>
-        <div class="bar-list">
-          <div class="bar-item"><label><span>Python (GeoPandas, Rasterio, Xarray)</span><span>78%</span></label><div class="bar-track"><div class="bar-fill teal" data-w="78"></div></div></div>
-          <div class="bar-item"><label><span>Microsoft Excel</span><span>92%</span></label><div class="bar-track"><div class="bar-fill teal" data-w="92"></div></div></div>
-          <div class="bar-item"><label><span>Power BI</span><span>80%</span></label><div class="bar-track"><div class="bar-fill teal" data-w="80"></div></div></div>
-          <div class="bar-item"><label><span>SQL / MS Access</span><span>70%</span></label><div class="bar-track"><div class="bar-fill teal" data-w="70"></div></div></div>
-          <div class="bar-item"><label><span>Data Visualization</span><span>85%</span></label><div class="bar-track"><div class="bar-fill teal" data-w="85"></div></div></div>
+      <!-- Data -->
+      <div class="skill-cat reveal d1">
+        <div class="skill-cat-icon"><i class="fa-solid fa-code"></i></div>
+        <h3 data-t="skill_data">Data &amp; Programming</h3>
+        <div class="prof-list">
+          <div class="prof-item"><div class="prof-label"><span>Python (GeoPandas, Rasterio)</span><span>78%</span></div><div class="prof-track"><div class="prof-fill" data-w="78"></div></div></div>
+          <div class="prof-item"><div class="prof-label"><span>Excel / Power BI</span><span>92%</span></div><div class="prof-track"><div class="prof-fill" data-w="92"></div></div></div>
+          <div class="prof-item"><div class="prof-label"><span>SQL / MS Access</span><span>70%</span></div><div class="prof-track"><div class="prof-fill" data-w="70"></div></div></div>
+          <div class="prof-item"><div class="prof-label"><span>Data Visualization</span><span>85%</span></div><div class="prof-track"><div class="prof-fill" data-w="85"></div></div></div>
+        </div>
+        <div class="skill-tags" style="margin-top:1.1rem">
+          <span class="skill-tag"><i class="fa-brands fa-python"></i>Python</span>
+          <span class="skill-tag"><i class="fa-solid fa-table"></i>Excel</span>
+          <span class="skill-tag"><i class="fa-solid fa-chart-bar"></i>Power BI</span>
+          <span class="skill-tag"><i class="fa-solid fa-database"></i>SQL</span>
         </div>
       </div>
-      <div class="skill-card reveal d2">
-        <div class="skill-ico"><i class="fa-solid fa-clipboard-check"></i></div>
-        <h3>MEAL &amp; Field Tools</h3>
-        <div class="bar-list">
-          <div class="bar-item"><label><span>KoboToolbox</span><span>97%</span></label><div class="bar-track"><div class="bar-fill" data-w="97"></div></div></div>
-          <div class="bar-item"><label><span>ODK</span><span>90%</span></label><div class="bar-track"><div class="bar-fill" data-w="90"></div></div></div>
-          <div class="bar-item"><label><span>MEAL Framework Design</span><span>85%</span></label><div class="bar-track"><div class="bar-fill" data-w="85"></div></div></div>
-          <div class="bar-item"><label><span>Dashboard Development</span><span>82%</span></label><div class="bar-track"><div class="bar-fill" data-w="82"></div></div></div>
-          <div class="bar-item"><label><span>Report Writing</span><span>88%</span></label><div class="bar-track"><div class="bar-fill" data-w="88"></div></div></div>
+      <!-- MEAL -->
+      <div class="skill-cat reveal d2">
+        <div class="skill-cat-icon"><i class="fa-solid fa-clipboard-check"></i></div>
+        <h3 data-t="skill_meal">MEAL &amp; Field Systems</h3>
+        <div class="prof-list">
+          <div class="prof-item"><div class="prof-label"><span>KoboToolbox</span><span>97%</span></div><div class="prof-track"><div class="prof-fill" data-w="97"></div></div></div>
+          <div class="prof-item"><div class="prof-label"><span>ODK</span><span>90%</span></div><div class="prof-track"><div class="prof-fill" data-w="90"></div></div></div>
+          <div class="prof-item"><div class="prof-label"><span>MEAL Framework Design</span><span>85%</span></div><div class="prof-track"><div class="prof-fill" data-w="85"></div></div></div>
+          <div class="prof-item"><div class="prof-label"><span>Dashboard Development</span><span>82%</span></div><div class="prof-track"><div class="prof-fill" data-w="82"></div></div></div>
+        </div>
+        <div class="skill-tags" style="margin-top:1.1rem">
+          <span class="skill-tag"><i class="fa-solid fa-check"></i>KoboToolbox</span>
+          <span class="skill-tag"><i class="fa-solid fa-check"></i>ODK</span>
+          <span class="skill-tag"><i class="fa-solid fa-check"></i>MEAL</span>
+          <span class="skill-tag"><i class="fa-solid fa-check"></i>Dashboards</span>
         </div>
       </div>
     </div>
-    <div class="reveal" style="margin-top:2.5rem">
-      <p class="eyebrow" style="margin-bottom:1rem">Soft Skills</p>
-      <div class="soft-grid">
-        <span class="soft-chip"><i class="fa-solid fa-lightbulb"></i> Problem-Solving</span>
-        <span class="soft-chip"><i class="fa-solid fa-comments"></i> Communication</span>
-        <span class="soft-chip"><i class="fa-solid fa-brain"></i> Critical Thinking</span>
-        <span class="soft-chip"><i class="fa-solid fa-people-group"></i> Collaboration</span>
-        <span class="soft-chip"><i class="fa-solid fa-list-check"></i> Project Management (PMP)</span>
-        <span class="soft-chip"><i class="fa-solid fa-hand-holding-heart"></i> Humanitarian Standards</span>
+
+    <!-- Soft skills row -->
+    <div class="reveal" style="margin-top:2.25rem">
+      <p class="eyebrow" style="margin-bottom:1rem" data-t="soft_eyebrow">Soft Skills &amp; Methodologies</p>
+      <div class="skill-tags">
+        <span class="skill-tag"><i class="fa-solid fa-lightbulb"></i><span data-t="sk1">Problem-Solving</span></span>
+        <span class="skill-tag"><i class="fa-solid fa-comments"></i><span data-t="sk2">Communication</span></span>
+        <span class="skill-tag"><i class="fa-solid fa-brain"></i><span data-t="sk3">Critical Thinking</span></span>
+        <span class="skill-tag"><i class="fa-solid fa-people-group"></i><span data-t="sk4">Collaboration</span></span>
+        <span class="skill-tag"><i class="fa-solid fa-list-check"></i><span data-t="sk5">Project Management (PMP)</span></span>
+        <span class="skill-tag"><i class="fa-solid fa-hand-holding-heart"></i><span data-t="sk6">Humanitarian Standards (SPHERE)</span></span>
+        <span class="skill-tag"><i class="fa-solid fa-chart-line"></i>Canva</span>
+        <span class="skill-tag"><i class="fa-brands fa-microsoft"></i>MS Office Suite</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- EXPERIENCE -->
+<!-- ═══════════════════════════════════════════════════════
+     EXPERIENCE
+═══════════════════════════════════════════════════════ -->
 <section id="experience">
   <div class="container">
-    <p class="eyebrow reveal">Career History</p>
-    <h2 class="section-title reveal d1">Work <span>Experience</span></h2>
+    <p class="eyebrow reveal" data-t="exp_eyebrow">Career History</p>
+    <h2 class="section-title reveal d1" data-t="exp_title">Work <span>Experience</span></h2>
     <div class="timeline">
 
       <div class="t-item reveal">
         <div class="t-dot"><i class="fa-solid fa-database"></i></div>
         <div class="t-card">
           <div class="t-head">
-            <span class="t-role">Program Data Management Officer</span>
-            <span class="t-org">PUI · Port Sudan</span>
-            <span class="t-date"><i class="fa-regular fa-calendar"></i> Mar 2025 – Present</span>
+            <div class="t-role" data-t="exp1_role">Program Data Management Officer</div>
+            <div class="t-meta">
+              <span class="t-org">PUI · Port Sudan</span>
+              <span class="t-date"><i class="fa-regular fa-calendar"></i> Mar 2025 – Present</span>
+            </div>
           </div>
-          <p>Manages the full data lifecycle in humanitarian programs — collection, analysis, and reporting using KoboToolbox, Excel, and GIS — supporting evidence-based decision-making.</p>
-          <ul>
-            <li>Designed and maintained KoboToolbox forms for multi-sector data collection across nutrition, WASH, and shelter programs</li>
-            <li>Built data dashboards to support program monitoring and donor reporting</li>
-            <li>Conducted data quality assurance and built staff capacity through training sessions</li>
-            <li>Integrated geographic insights into program reporting for operational visibility</li>
+          <p class="t-body" data-t="exp1_body">Manages the full data lifecycle in humanitarian programs — collection, analysis, and reporting using KoboToolbox, Excel, and GIS — supporting evidence-based decision-making.</p>
+          <ul class="t-list">
+            <li data-t="exp1_b1">Designed and maintained KoboToolbox forms for multi-sector data collection across nutrition, WASH, and shelter programs</li>
+            <li data-t="exp1_b2">Built data dashboards to support program monitoring and donor reporting</li>
+            <li data-t="exp1_b3">Conducted data quality assurance and built staff capacity through training sessions</li>
+            <li data-t="exp1_b4">Integrated geographic insights into program reporting for operational visibility</li>
           </ul>
         </div>
       </div>
@@ -425,15 +1381,17 @@
         <div class="t-dot"><i class="fa-solid fa-map-location-dot"></i></div>
         <div class="t-card">
           <div class="t-head">
-            <span class="t-role">GIS Analyst</span>
-            <span class="t-org">Adiyat Marketing &amp; Distribution · Khartoum</span>
-            <span class="t-date"><i class="fa-regular fa-calendar"></i> Mar 2023 – Present</span>
+            <div class="t-role" data-t="exp2_role">GIS Analyst</div>
+            <div class="t-meta">
+              <span class="t-org">Adiyat Marketing &amp; Distribution · Khartoum</span>
+              <span class="t-date"><i class="fa-regular fa-calendar"></i> Mar 2023 – Present</span>
+            </div>
           </div>
-          <p>Developed spatial data insights to optimize market analysis, distribution routes, and customer outreach for a national marketing and distribution company.</p>
-          <ul>
-            <li>Created and managed geospatial databases, maps, and visualizations to identify customer trends</li>
-            <li>Analyzed location data to improve delivery efficiency and route optimization</li>
-            <li>Collaborated with marketing and logistics teams to integrate geographic insights into business planning</li>
+          <p class="t-body" data-t="exp2_body">Developed spatial data insights to optimize market analysis, distribution routes, and customer outreach for a national marketing and distribution company.</p>
+          <ul class="t-list">
+            <li data-t="exp2_b1">Created and managed geospatial databases, maps, and visualizations to identify customer trends</li>
+            <li data-t="exp2_b2">Analyzed location data to improve delivery efficiency and route optimization</li>
+            <li data-t="exp2_b3">Collaborated with marketing and logistics teams to integrate geographic insights into business planning</li>
           </ul>
         </div>
       </div>
@@ -442,15 +1400,17 @@
         <div class="t-dot"><i class="fa-solid fa-heart-pulse"></i></div>
         <div class="t-card">
           <div class="t-head">
-            <span class="t-role">GIS Analyst</span>
-            <span class="t-org">Health Ministry · Khartoum</span>
-            <span class="t-date"><i class="fa-regular fa-calendar"></i> Sep 2021 – Sep 2022</span>
+            <div class="t-role" data-t="exp3_role">GIS Analyst</div>
+            <div class="t-meta">
+              <span class="t-org">Sudan Health Ministry · Khartoum</span>
+              <span class="t-date"><i class="fa-regular fa-calendar"></i> Sep 2021 – Sep 2022</span>
+            </div>
           </div>
-          <p>Conducted spatial analysis and visualization to support public health initiatives including disease surveillance, health resource allocation, and environmental health monitoring.</p>
-          <ul>
-            <li>Developed and maintained geospatial databases to track health indicators across Sudan</li>
-            <li>Produced maps and spatial reports for public health decision-making</li>
-            <li>Identified geographic patterns in health data to guide resource placement</li>
+          <p class="t-body" data-t="exp3_body">Conducted spatial analysis and visualization to support public health initiatives including disease surveillance, health resource allocation, and environmental health monitoring.</p>
+          <ul class="t-list">
+            <li data-t="exp3_b1">Developed and maintained geospatial databases to track health indicators across Sudan</li>
+            <li data-t="exp3_b2">Produced maps and spatial reports for public health decision-making</li>
+            <li data-t="exp3_b3">Identified geographic patterns in health data to guide resource placement</li>
           </ul>
         </div>
       </div>
@@ -459,15 +1419,13 @@
         <div class="t-dot"><i class="fa-solid fa-city"></i></div>
         <div class="t-card">
           <div class="t-head">
-            <span class="t-role">GIS Analyst</span>
-            <span class="t-org">Karari Localities · Omdurman</span>
-            <span class="t-date"><i class="fa-regular fa-calendar"></i> Nov 2016 – Dec 2016</span>
+            <div class="t-role" data-t="exp4_role">GIS Analyst</div>
+            <div class="t-meta">
+              <span class="t-org">Karari Localities · Omdurman</span>
+              <span class="t-date"><i class="fa-regular fa-calendar"></i> Nov 2016 – Dec 2016</span>
+            </div>
           </div>
-          <p>Gathered, processed, and analyzed spatial data to aid urban planning and resource management for Karari Locality.</p>
-          <ul>
-            <li>Maintained geospatial databases for the locality's planning department</li>
-            <li>Produced detailed maps and visualizations for urban decision-making</li>
-          </ul>
+          <p class="t-body" data-t="exp4_body">Gathered, processed, and analyzed spatial data to aid urban planning and resource management for Karari Locality, producing detailed maps and geospatial databases.</p>
         </div>
       </div>
 
@@ -475,311 +1433,178 @@
         <div class="t-dot"><i class="fa-solid fa-graduation-cap"></i></div>
         <div class="t-card">
           <div class="t-head">
-            <span class="t-role">Teaching Assistant (Part-time)</span>
-            <span class="t-org">Khartoum University – GIS &amp; Cartography Dept.</span>
-            <span class="t-date"><i class="fa-regular fa-calendar"></i> May 2021 – Present</span>
+            <div class="t-role" data-t="exp5_role">Teaching Assistant (Part-time)</div>
+            <div class="t-meta">
+              <span class="t-org">Khartoum University – GIS &amp; Cartography Dept.</span>
+              <span class="t-date"><i class="fa-regular fa-calendar"></i> May 2021 – Present</span>
+            </div>
           </div>
-          <p>Supports GIS Department courses including Database Systems, Weather and Climate Mapping, and Expert Systems.</p>
-          <ul>
-            <li>Supervised practical lab sessions in QGIS, ArcGIS, and ERDAS Imagine</li>
-            <li>Developed instructional materials and lab tutorials for undergraduates</li>
-            <li>Mentored final-year students on GIS project design and spatial analysis</li>
+          <p class="t-body" data-t="exp5_body">Supports GIS Department courses: Database Systems, Weather and Climate Mapping, and Expert Systems. Supervises lab sessions and mentors final-year students.</p>
+          <ul class="t-list">
+            <li data-t="exp5_b1">Supervised practical lab sessions in QGIS, ArcGIS, and ERDAS Imagine</li>
+            <li data-t="exp5_b2">Developed instructional materials and lab tutorials for undergraduate students</li>
           </ul>
         </div>
       </div>
-
     </div>
 
     <!-- Freelance -->
-    <div style="margin-top:4.5rem">
-      <p class="eyebrow reveal">Independent Work</p>
-      <h3 class="reveal d1" style="font-family:var(--ff-h);font-size:clamp(1.6rem,3vw,2.2rem);font-weight:700;color:var(--white);margin-bottom:.5rem">Freelance <span style="color:var(--gold)">Projects</span></h3>
+    <div style="margin-top:4rem">
+      <p class="eyebrow reveal" data-t="fl_eyebrow">Independent Work</p>
+      <h3 class="reveal d1" style="font-family:var(--ff-display);font-size:clamp(1.5rem,3vw,2rem);font-weight:800;color:var(--primary);margin-bottom:.5rem;transition:color var(--t-slow)" data-t="fl_title"><span data-theme-text>Freelance</span> <span style="color:var(--accent)" data-t="fl_title2">Projects</span></h3>
       <div class="fl-grid">
         <div class="fl-card reveal">
           <div class="fl-year">2022</div>
-          <h4>Farmers' Perceptions on Climate Change &amp; Adaptation — White Nile State</h4>
-          <p>Analyzed climate change impacts on agricultural practices and farmer resilience for the Supreme Council for Environment using KoboToolbox.</p>
+          <h4 data-t="fl1_h">Farmers' Perceptions on Climate Change — White Nile State</h4>
+          <p data-t="fl1_p">Analyzed climate change impacts on agricultural practices and farmer resilience for the Supreme Council for Environment using KoboToolbox.</p>
         </div>
         <div class="fl-card reveal d1">
           <div class="fl-year">2024</div>
-          <h4>Acacia Distribution Mapping — Saudi Arabia</h4>
-          <p>Developed geospatial maps of Acacia distribution across Saudi regions using remote sensing, supporting ecological conservation efforts.</p>
+          <h4 data-t="fl2_h">Acacia Distribution Mapping — Saudi Arabia</h4>
+          <p data-t="fl2_p">Developed geospatial maps of Acacia distribution across Saudi regions using remote sensing, supporting ecological conservation efforts.</p>
         </div>
         <div class="fl-card reveal d2">
           <div class="fl-year">2024 – Ongoing</div>
-          <h4>Impact of Conflict on Sudan's Agricultural Sector</h4>
-          <p>Analyzing war impacts on cultivated land using Google Earth Engine (GEE) and Python, focusing on multitemporal reduction in agricultural areas via Sentinel-2 time-series.</p>
+          <h4 data-t="fl3_h">Impact of Conflict on Sudan's Agricultural Sector</h4>
+          <p data-t="fl3_p">Analyzing war impacts on cultivated land using Google Earth Engine and Python, measuring reduction in agricultural areas via Sentinel-2 multitemporal analysis.</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- EDUCATION & CERTIFICATIONS -->
+<!-- ═══════════════════════════════════════════════════════
+     EDUCATION & CERTIFICATIONS
+═══════════════════════════════════════════════════════ -->
 <section id="education">
   <div class="container">
-    <p class="eyebrow reveal">Academic &amp; Professional</p>
-    <h2 class="section-title reveal d1">Education &amp; <span>Certifications</span></h2>
-    <div class="edu-cert-grid">
-
+    <p class="eyebrow reveal" data-t="edu_eyebrow">Academic &amp; Professional</p>
+    <h2 class="section-title reveal d1" data-t="edu_title">Education &amp; <span>Certifications</span></h2>
+    <div class="edu-grid">
       <div class="reveal">
-        <div class="block-title"><i class="fa-solid fa-university" style="color:var(--gold);margin-right:.6rem;font-size:1rem"></i>Education</div>
+        <div class="block-h"><i class="fa-solid fa-university"></i><span data-t="edu_h">Education</span></div>
         <div class="edu-entry">
-          <div class="deg">Masters in GIS &amp; Remote Sensing</div>
+          <div class="deg" data-t="deg1">Masters in GIS &amp; Remote Sensing</div>
           <div class="uni">Khartoum University · Faculty of Geography &amp; Environmental Sciences</div>
           <div class="edate">2021 — All academic requirements completed; awaiting official graduation</div>
         </div>
         <div class="edu-entry">
-          <div class="deg">B.Sc. Geography &amp; Environment — GIS Dept.</div>
+          <div class="deg" data-t="deg2">B.Sc. Geography &amp; Environment — GIS Dept.</div>
           <div class="uni">Khartoum University</div>
           <div class="edate">Sep 2013 – Dec 2018 · Grade: 2.81</div>
-          <p>Thesis: <em>Assessment of Vegetation Degradation — Case Study of Dander Localities</em></p>
+          <p data-t="thesis">Thesis: <em>Assessment of Vegetation Degradation — Dander Localities</em></p>
         </div>
       </div>
-
       <div class="reveal d2">
-        <div class="block-title"><i class="fa-solid fa-certificate" style="color:var(--gold);margin-right:.6rem;font-size:1rem"></i>Certifications</div>
+        <div class="block-h"><i class="fa-solid fa-certificate"></i><span data-t="cert_h">Certifications</span></div>
         <div class="cert-list">
           <div class="cert-item">
             <div class="cert-ico"><i class="fa-solid fa-diagram-project"></i></div>
             <div>
-              <div class="cert-name">Project Management Professional (PMP)</div>
-              <div class="cert-by">Coursera · Project Management Institute (PMI)</div>
+              <div class="cert-name" data-t="cert1">Project Management Professional (PMP)</div>
+              <div class="cert-by">Coursera · PMI</div>
               <div class="cert-date">Jan 2023</div>
             </div>
           </div>
           <div class="cert-item">
             <div class="cert-ico"><i class="fa-solid fa-map"></i></div>
             <div>
-              <div class="cert-name">GIS Specialization — 4 Courses</div>
-              <div class="cert-by">Coursera · UC Davis — Fundamentals, Data Formats, ArcGIS Analysis, GIS Applications</div>
+              <div class="cert-name" data-t="cert2">GIS Specialization (4 Courses)</div>
+              <div class="cert-by">Coursera · University of California, Davis</div>
               <div class="cert-date">Jul 2025</div>
             </div>
           </div>
           <div class="cert-item">
             <div class="cert-ico"><i class="fa-brands fa-google"></i></div>
             <div>
-              <div class="cert-name">Google IT Support Specialization</div>
-              <div class="cert-by">Coursera · Google — Networking, Architecture, Problem Solving</div>
+              <div class="cert-name" data-t="cert3">Google IT Support Specialization</div>
+              <div class="cert-by">Coursera · Google</div>
               <div class="cert-date">Aug 2023</div>
             </div>
           </div>
           <div class="cert-item">
             <div class="cert-ico"><i class="fa-solid fa-chart-bar"></i></div>
             <div>
-              <div class="cert-name">Google Data Analytics Specialization</div>
-              <div class="cert-by">Coursera · Google — SQL, R, Power BI, Data Cleaning &amp; Visualization</div>
+              <div class="cert-name" data-t="cert4">Google Data Analytics Specialization</div>
+              <div class="cert-by">Coursera · Google — SQL, R, Power BI</div>
               <div class="cert-date">Jul 2025</div>
             </div>
           </div>
           <div class="cert-item">
             <div class="cert-ico"><i class="fa-solid fa-hand-holding-heart"></i></div>
             <div>
-              <div class="cert-name">Introduction to Social Work &amp; Humanitarian Aid</div>
-              <div class="cert-by">Kiron — SPHERE, Humanitarian Standards, Accountability to Affected People</div>
+              <div class="cert-name" data-t="cert5">Introduction to Social Work &amp; Humanitarian Aid</div>
+              <div class="cert-by">Kiron — SPHERE Standards</div>
               <div class="cert-date">Aug 2024</div>
             </div>
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </section>
 
-<!-- ============================================================
-     WORK GALLERY
-     ✏️ HOW TO ADD YOUR IMAGES:
-     1. Put your image files in the same folder as this HTML file
-        (e.g. inside an "images/" subfolder)
-     2. In each <img src="" ...> tag below, replace "" with your
-        image path, e.g. src="images/drought_map.jpg"
-     3. Update the title, description text, and tool tags
-     4. To add a new card: copy any .gal-card block and paste it
-        before the .gal-add card, then update the content
-============================================================ -->
-<section id="gallery">
-  <div class="container">
-    <p class="eyebrow reveal">Visual Portfolio</p>
-    <h2 class="section-title reveal d1">Work <span>Gallery</span></h2>
-    <div class="gallery-intro reveal d2">
-      <p>A visual showcase of maps, dashboards, remote sensing outputs, and field data systems produced throughout my career. Add your own images by editing the HTML file — instructions are in the code comments above each card.</p>
-    </div>
-
-    <div class="gallery-notice reveal">
-      <i class="fa-solid fa-circle-info"></i>
-      <span>
-        <strong>To add your images:</strong> Open this HTML file and find each <code>&lt;img src=""&gt;</code> tag in the gallery section. Replace <code>src=""</code> with your image path (e.g. <code>src="images/my_map.jpg"</code>). Update the title, description, and tool tags for each card to match your work.
-      </span>
-    </div>
-
-    <div class="gal-grid">
-
-      <!-- ── CARD 1 ── replace src="" with your image path -->
-      <div class="gal-card reveal">
-        <div class="gal-img">
-          <img src="" alt="Drought Vulnerability Map"
-               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
-          <div class="gal-placeholder">
-            <i class="fa-solid fa-map"></i>
-            <p>Your image here<br><small>src="images/drought_map.jpg"</small></p>
-          </div>
-          <span class="gal-badge">Remote Sensing</span>
-        </div>
-        <div class="gal-body">
-          <h3>Drought Vulnerability Map — Darfur</h3>
-          <p>Multi-temporal NDVI analysis using Landsat imagery to classify drought severity across agropastoral zones. Used in emergency response planning and cluster coordination.</p>
-          <div class="gal-tools">
-            <span class="gal-tool">Google Earth Engine</span>
-            <span class="gal-tool">NDVI</span>
-            <span class="gal-tool">Landsat</span>
-            <span class="gal-tool">QGIS</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- ── CARD 2 ── -->
-      <div class="gal-card reveal d1">
-        <div class="gal-img">
-          <img src="" alt="Health Facility Coverage Map"
-               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
-          <div class="gal-placeholder">
-            <i class="fa-solid fa-heart-pulse"></i>
-            <p>Your image here<br><small>src="images/health_map.jpg"</small></p>
-          </div>
-          <span class="gal-badge">Public Health GIS</span>
-        </div>
-        <div class="gal-body">
-          <h3>Health Facility Coverage &amp; Disease Surveillance</h3>
-          <p>Spatial analysis of health resource allocation and disease pattern mapping for Sudan's Health Ministry, identifying underserved areas for priority intervention.</p>
-          <div class="gal-tools">
-            <span class="gal-tool">ArcGIS</span>
-            <span class="gal-tool">Spatial Analysis</span>
-            <span class="gal-tool">Health GIS</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- ── CARD 3 ── -->
-      <div class="gal-card reveal d2">
-        <div class="gal-img">
-          <img src="" alt="MEAL Dashboard"
-               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
-          <div class="gal-placeholder">
-            <i class="fa-solid fa-chart-bar"></i>
-            <p>Your image here<br><small>src="images/dashboard.png"</small></p>
-          </div>
-          <span class="gal-badge">Humanitarian Data</span>
-        </div>
-        <div class="gal-body">
-          <h3>PUI Humanitarian Program Dashboard</h3>
-          <p>Real-time monitoring dashboard for PUI Sudan's multi-sector response, covering beneficiary registration, activity tracking, and geographic program coverage visualization.</p>
-          <div class="gal-tools">
-            <span class="gal-tool">KoboToolbox</span>
-            <span class="gal-tool">Power BI</span>
-            <span class="gal-tool">Excel</span>
-            <span class="gal-tool">MEAL</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- ── CARD 4 ── -->
-      <div class="gal-card reveal">
-        <div class="gal-img">
-          <img src="" alt="Acacia Distribution Map"
-               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
-          <div class="gal-placeholder">
-            <i class="fa-solid fa-tree"></i>
-            <p>Your image here<br><small>src="images/acacia_map.jpg"</small></p>
-          </div>
-          <span class="gal-badge">Ecology &amp; Conservation</span>
-        </div>
-        <div class="gal-body">
-          <h3>Acacia Distribution Mapping — Saudi Arabia</h3>
-          <p>Geospatial mapping of Acacia species distribution across multiple Saudi regions using remote sensing classification, supporting ecological conservation planning.</p>
-          <div class="gal-tools">
-            <span class="gal-tool">ENVI</span>
-            <span class="gal-tool">ArcGIS</span>
-            <span class="gal-tool">Species Distribution</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- ── CARD 5 ── -->
-      <div class="gal-card reveal d1">
-        <div class="gal-img">
-          <img src="" alt="Agricultural Change Detection"
-               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
-          <div class="gal-placeholder">
-            <i class="fa-solid fa-satellite"></i>
-            <p>Your image here<br><small>src="images/agri_conflict.jpg"</small></p>
-          </div>
-          <span class="gal-badge">Conflict &amp; Agriculture</span>
-        </div>
-        <div class="gal-body">
-          <h3>War Impact on Sudan's Agricultural Land</h3>
-          <p>Multitemporal analysis using GEE and Python to measure reduction in cultivated land caused by conflict, using Sentinel-2 time-series change detection.</p>
-          <div class="gal-tools">
-            <span class="gal-tool">Google Earth Engine</span>
-            <span class="gal-tool">Python</span>
-            <span class="gal-tool">Sentinel-2</span>
-            <span class="gal-tool">Change Detection</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- ── ADD MORE CARDS HERE ── copy the block above and edit it -->
-      <div class="gal-add reveal d2">
-        <i class="fa-solid fa-plus"></i>
-        <span>Add your own work here<br><small>Copy a card block in the HTML and replace the image path and description</small></span>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
+<!-- ═══════════════════════════════════════════════════════
+     CONTACT
+═══════════════════════════════════════════════════════ -->
 <section id="contact">
   <div class="container">
+    <p class="eyebrow reveal" data-t="contact_eyebrow">Get In Touch</p>
+    <h2 class="section-title reveal d1" data-t="contact_title">Let's <span>Connect</span></h2>
     <div class="contact-grid">
-      <div class="reveal">
-        <p class="eyebrow">Get In Touch</p>
-        <h2 class="section-title">Let's <span>Connect</span></h2>
-        <p class="contact-text" style="font-size:1rem;line-height:1.8;color:var(--text-mid);margin-bottom:2.5rem">Whether you have a GIS project, need spatial analysis for humanitarian work, or want to collaborate — reach out via email or LinkedIn.</p>
+      <div class="contact-intro reveal">
+        <p data-t="contact_intro">Whether you have a GIS project, need spatial analysis for humanitarian work, or want to collaborate on environmental research — I'd love to hear from you.</p>
         <div class="c-links">
           <a href="mailto:haidaraldaw010@gmail.com" class="c-link">
             <div class="c-ico"><i class="fa-solid fa-envelope"></i></div>
-            <div class="c-txt"><strong>Email</strong><span>haidaraldaw010@gmail.com</span></div>
+            <div class="c-txt"><strong data-t="c_email">Email</strong><span>haidaraldaw010@gmail.com</span></div>
           </a>
-          <a href="https://www.linkedin.com/in/haidereldaw" target="_blank" rel="noopener" class="c-link">
+          <a href="https://www.linkedin.com/in/haidereldaw" target="_blank" class="c-link">
             <div class="c-ico"><i class="fa-brands fa-linkedin-in"></i></div>
             <div class="c-txt"><strong>LinkedIn</strong><span>linkedin.com/in/haidereldaw</span></div>
           </a>
-          <a href="https://haidereldaw.github.io/GIS-Analyst/" target="_blank" rel="noopener" class="c-link">
+          <a href="https://haidereldaw.github.io/GIS-Analyst/" target="_blank" class="c-link">
             <div class="c-ico"><i class="fa-solid fa-globe"></i></div>
-            <div class="c-txt"><strong>Portfolio</strong><span>haidereldaw.github.io/GIS-Analyst</span></div>
+            <div class="c-txt"><strong data-t="c_portfolio">Portfolio</strong><span>haidereldaw.github.io</span></div>
           </a>
           <div class="c-link">
             <div class="c-ico"><i class="fa-solid fa-phone"></i></div>
-            <div class="c-txt"><strong>Phone</strong><span>+249 923 292 330</span></div>
+            <div class="c-txt"><strong data-t="c_phone">Phone</strong><span>+249 923 292 330</span></div>
           </div>
           <div class="c-link">
             <div class="c-ico"><i class="fa-solid fa-location-dot"></i></div>
-            <div class="c-txt"><strong>Location</strong><span>Port Sudan, Sudan</span></div>
+            <div class="c-txt"><strong data-t="c_loc">Location</strong><span data-t="location">Port Sudan, Sudan</span></div>
           </div>
         </div>
       </div>
+      <!-- Form -->
       <div class="reveal d2">
-        <div class="form">
+        <div class="contact-form">
           <div class="form-row">
-            <div class="fg"><label for="fn">First Name</label><input type="text" id="fn" placeholder="First name"/></div>
-            <div class="fg"><label for="ln">Last Name</label><input type="text" id="ln" placeholder="Last name"/></div>
+            <div class="fg">
+              <label data-t="f_fname">First Name</label>
+              <input type="text" id="fn" data-placeholder-t="f_fname_ph" placeholder="First name"/>
+            </div>
+            <div class="fg">
+              <label data-t="f_lname">Last Name</label>
+              <input type="text" id="ln" data-placeholder-t="f_lname_ph" placeholder="Last name"/>
+            </div>
           </div>
-          <div class="fg"><label for="em">Email</label><input type="email" id="em" placeholder="your@email.com"/></div>
-          <div class="fg"><label for="sub">Subject</label><input type="text" id="sub" placeholder="How can I help?"/></div>
-          <div class="fg"><label for="msg">Message</label><textarea id="msg" rows="5" placeholder="Your message..."></textarea></div>
-          <button class="btn btn-gold" onclick="sendForm()" style="border:none;cursor:pointer;margin-top:.25rem">
-            <i class="fa-solid fa-paper-plane"></i> Send Message
+          <div class="fg">
+            <label data-t="f_email">Email Address</label>
+            <input type="email" id="em" placeholder="your@email.com"/>
+          </div>
+          <div class="fg">
+            <label data-t="f_subject">Subject</label>
+            <input type="text" id="sub" data-placeholder-t="f_subject_ph" placeholder="How can I help?"/>
+          </div>
+          <div class="fg">
+            <label data-t="f_msg">Message</label>
+            <textarea id="msg" rows="5" data-placeholder-t="f_msg_ph" placeholder="Your message..."></textarea>
+          </div>
+          <button class="btn btn-accent" onclick="sendForm()" style="align-self:flex-start">
+            <i class="fa-solid fa-paper-plane"></i>
+            <span data-t="btn_send">Send Message</span>
           </button>
         </div>
       </div>
@@ -787,11 +1612,13 @@
   </div>
 </section>
 
-<!-- FOOTER -->
+<!-- ═══════════════════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════════════════ -->
 <footer>
   <div class="container footer-inner">
-    <div class="footer-brand">Haider <span>Eldaw</span></div>
-    <p class="footer-copy">© 2025 Haider Eldaw · GIS Analyst &amp; Data Management Officer · Port Sudan, Sudan</p>
+    <div class="footer-logo">Haider <span>Eldaw</span></div>
+    <p class="footer-copy" data-t="footer_copy">© 2025 Haider Eldaw · GIS Analyst · Port Sudan, Sudan</p>
     <div class="footer-soc">
       <a href="mailto:haidaraldaw010@gmail.com" title="Email"><i class="fa-solid fa-envelope"></i></a>
       <a href="https://www.linkedin.com/in/haidereldaw" target="_blank" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
@@ -800,51 +1627,329 @@
   </div>
 </footer>
 
+<!-- ═══════════════════════════════════════════════════════
+     JAVASCRIPT
+═══════════════════════════════════════════════════════ -->
 <script>
-  /* Navbar */
-  const nav = document.getElementById('nav');
-  window.addEventListener('scroll', () => {
-    nav.classList.toggle('solid', window.scrollY > 50);
-    updateNav();
+/* ════════════════════════════════════════════════════════
+   TRANSLATIONS SYSTEM
+════════════════════════════════════════════════════════ */
+const T = {
+  en: {
+    location:"Port Sudan, Sudan",
+    nav_about:"About", nav_skills:"Skills", nav_exp:"Experience",
+    nav_edu:"Education", nav_gallery:"Gallery", nav_contact:"Contact",
+    hero_badge:"GIS Analyst · Remote Sensing · Humanitarian Data",
+    hero_title:"GIS Analyst", hero_title2:" & Program Data Management Officer",
+    hero_bio:"5+ years transforming satellite imagery, spatial data, and field surveys into geographic intelligence that drives humanitarian response, public health, and environmental decision-making across Sudan.",
+    btn_cv:"Download CV", btn_contact:"Contact", btn_gallery:"Work Gallery",
+    stat_years:"Years Exp.", stat_emp:"Employers", stat_free:"Freelance", stat_cert:"Certs",
+    about_eyebrow:"About Me",
+    about_title:"Mapping Data into Decisions",
+    about_p1:"I specialize in geospatial analysis, remote sensing, and humanitarian data management. My work spans processing Landsat and Sentinel satellite imagery to designing full MEAL frameworks — always focused on producing insights that reach decision-makers in the field.",
+    about_p2:"I have contributed to public health surveillance at Sudan's Health Ministry, led distribution optimization at Adiyat, supported urban planning at Karari Locality, and currently manage program data for PUI's humanitarian operations in Port Sudan — alongside teaching GIS at Khartoum University.",
+    about_p3:"My objective: leverage spatial intelligence in a dynamic organization to deliver geospatial analysis useful for complex humanitarian and environmental problems.",
+    skills_eyebrow:"Technical Arsenal", skills_title:"Tools & Skills",
+    skill_gis:"GIS & Remote Sensing", skill_data:"Data & Programming", skill_meal:"MEAL & Field Systems",
+    soft_eyebrow:"Soft Skills & Methodologies",
+    sk1:"Problem-Solving", sk2:"Communication", sk3:"Critical Thinking",
+    sk4:"Collaboration", sk5:"Project Management (PMP)", sk6:"Humanitarian Standards (SPHERE)",
+    exp_eyebrow:"Career History", exp_title:"Work Experience",
+    exp1_role:"Program Data Management Officer",
+    exp1_body:"Manages the full data lifecycle in humanitarian programs — collection, analysis, and reporting using KoboToolbox, Excel, and GIS — supporting evidence-based decision-making.",
+    exp1_b1:"Designed and maintained KoboToolbox forms for multi-sector data collection",
+    exp1_b2:"Built data dashboards to support program monitoring and donor reporting",
+    exp1_b3:"Conducted data quality assurance and built staff capacity through training",
+    exp1_b4:"Integrated geographic insights into program reporting",
+    exp2_role:"GIS Analyst", exp2_body:"Developed spatial data insights to optimize market analysis, distribution routes, and customer outreach.",
+    exp2_b1:"Created geospatial databases, maps, and visualizations to identify customer trends",
+    exp2_b2:"Analyzed location data to improve delivery efficiency and route optimization",
+    exp2_b3:"Collaborated with teams to integrate geographic insights into business planning",
+    exp3_role:"GIS Analyst", exp3_body:"Conducted spatial analysis and visualization to support public health initiatives including disease surveillance and health resource allocation.",
+    exp3_b1:"Developed geospatial databases to track health indicators across Sudan",
+    exp3_b2:"Produced maps and spatial reports for public health decision-making",
+    exp3_b3:"Identified geographic patterns in health data to guide resource placement",
+    exp4_role:"GIS Analyst", exp4_body:"Gathered, processed, and analyzed spatial data to aid urban planning and resource management.",
+    exp5_role:"Teaching Assistant (Part-time)", exp5_body:"Supports GIS Department courses: Database Systems, Weather and Climate Mapping, and Expert Systems.",
+    exp5_b1:"Supervised practical lab sessions in QGIS, ArcGIS, and ERDAS Imagine",
+    exp5_b2:"Developed instructional materials and lab tutorials for undergraduate students",
+    fl_eyebrow:"Independent Work", fl_title:"Freelance", fl_title2:"Projects",
+    fl1_h:"Farmers' Perceptions on Climate Change — White Nile State",
+    fl1_p:"Analyzed climate change impacts on agricultural practices for the Supreme Council for Environment using KoboToolbox.",
+    fl2_h:"Acacia Distribution Mapping — Saudi Arabia",
+    fl2_p:"Developed geospatial maps of Acacia distribution across Saudi regions, supporting ecological conservation.",
+    fl3_h:"Impact of Conflict on Sudan's Agricultural Sector",
+    fl3_p:"Analyzing war impacts on cultivated land using Google Earth Engine and Python via Sentinel-2 multitemporal analysis.",
+    edu_eyebrow:"Academic & Professional", edu_title:"Education & Certifications",
+    edu_h:"Education", cert_h:"Certifications",
+    deg1:"Masters in GIS & Remote Sensing", deg2:"B.Sc. Geography & Environment — GIS Dept.",
+    thesis:"Thesis: Assessment of Vegetation Degradation — Dander Localities",
+    cert1:"Project Management Professional (PMP)",
+    cert2:"GIS Specialization (4 Courses)", cert3:"Google IT Support Specialization",
+    cert4:"Google Data Analytics Specialization", cert5:"Introduction to Social Work & Humanitarian Aid",
+    gal_eyebrow:"Visual Portfolio", gal_title:"Work Gallery",
+    gal_desc:"A visual showcase of maps, dashboards, remote sensing outputs, and field data systems. Replace each image src with your own files.",
+    gal_notice:"To add images: Open the HTML file, find each <img src=\"\"> tag in the gallery section, and replace src=\"\" with your image path (e.g. src=\"images/my_map.jpg\"). Update the title and description for each card.",
+    gal_add:"Add your own work here",
+    gal1_h:"Drought Vulnerability Map — Darfur",
+    gal1_p:"Multi-temporal NDVI analysis using Landsat imagery to classify drought severity across agropastoral zones. Used in emergency response planning.",
+    gal2_h:"Health Facility Coverage — Sudan",
+    gal2_p:"Spatial analysis of health resource allocation and disease pattern mapping for Sudan's Health Ministry, identifying underserved areas for priority targeting.",
+    gal3_h:"PUI Program Monitoring Dashboard",
+    gal3_p:"Real-time humanitarian program dashboard covering beneficiary registration, activity tracking, and geographic coverage for PUI Sudan's multi-sector response.",
+    gal4_h:"Acacia Distribution — Saudi Arabia",
+    gal4_p:"Geospatial mapping of Acacia species distribution across Saudi regions using remote sensing classification, supporting ecological conservation planning.",
+    gal5_h:"War Impact on Sudan's Agricultural Land",
+    gal5_p:"Multitemporal change detection using GEE and Python to quantify cultivated land loss caused by armed conflict, via Sentinel-2 time-series analysis.",
+    contact_eyebrow:"Get In Touch", contact_title:"Let's Connect",
+    contact_intro:"Whether you have a GIS project, need spatial analysis for humanitarian work, or want to collaborate on environmental research — I'd love to hear from you.",
+    c_email:"Email", c_portfolio:"Portfolio", c_phone:"Phone", c_loc:"Location",
+    f_fname:"First Name", f_lname:"Last Name", f_email:"Email Address",
+    f_subject:"Subject", f_msg:"Message", btn_send:"Send Message",
+    f_fname_ph:"First name", f_lname_ph:"Last name",
+    f_subject_ph:"How can I help?", f_msg_ph:"Your message...",
+    footer_copy:"© 2025 Haider Eldaw · GIS Analyst · Port Sudan, Sudan"
+  },
+  ar: {
+    location:"بورت سودان، السودان",
+    nav_about:"عن الصفحة", nav_skills:"المهارات", nav_exp:"الخبرات",
+    nav_edu:"التعليم", nav_gallery:"المعرض", nav_contact:"اتصل بي",
+    hero_badge:"محلل GIS · الاستشعار عن بُعد · إدارة البيانات الإنسانية",
+    hero_title:"محلل GIS", hero_title2:" ومسؤول إدارة البيانات البرامجية",
+    hero_bio:"أكثر من 5 سنوات في تحويل صور الأقمار الصناعية والبيانات المكانية ومسوحات الميدان إلى ذكاء جغرافي يدعم الاستجابة الإنسانية والصحة العامة وصنع القرار البيئي في السودان.",
+    btn_cv:"تحميل السيرة الذاتية", btn_contact:"تواصل", btn_gallery:"معرض الأعمال",
+    stat_years:"سنوات خبرة", stat_emp:"جهات عمل", stat_free:"مشاريع حرة", stat_cert:"شهادات",
+    about_eyebrow:"عن حيدر",
+    about_title:"تحويل البيانات إلى قرارات",
+    about_p1:"متخصص في التحليل الجيومكاني والاستشعار عن بُعد وإدارة البيانات الإنسانية. يمتد عملي من معالجة صور Landsat وSentinel إلى تصميم أطر MEAL الكاملة — مع التركيز دائماً على إنتاج رؤى تصل إلى صانعي القرار في الميدان.",
+    about_p2:"ساهمت في مراقبة الصحة العامة بوزارة الصحة السودانية، وقدت تحسين التوزيع في شركة خاصة، ودعمت التخطيط العمراني في محلية كررى، وأدير حالياً بيانات البرامج لعمليات PUI الإنسانية في بورت سودان — إلى جانب تدريس GIS بجامعة الخرطوم.",
+    about_p3:"هدفي: الاستفادة من الذكاء المكاني في منظمة ديناميكية لتقديم تحليل جيومكاني مفيد للمشاكل الإنسانية والبيئية المعقدة.",
+    skills_eyebrow:"الترسانة التقنية", skills_title:"الأدوات والمهارات",
+    skill_gis:"نظم المعلومات الجغرافية والاستشعار عن بُعد",
+    skill_data:"تحليل البيانات والبرمجة",
+    skill_meal:"أنظمة MEAL وأدوات الميدان",
+    soft_eyebrow:"المهارات الناعمة والمنهجيات",
+    sk1:"حل المشكلات", sk2:"التواصل", sk3:"التفكير النقدي",
+    sk4:"العمل الجماعي", sk5:"إدارة المشاريع (PMP)", sk6:"المعايير الإنسانية (SPHERE)",
+    exp_eyebrow:"المسيرة المهنية", exp_title:"الخبرة العملية",
+    exp1_role:"مسؤول إدارة البيانات البرامجية",
+    exp1_body:"إدارة دورة حياة البيانات الكاملة في البرامج الإنسانية — الجمع والتحليل وإعداد التقارير باستخدام KoboToolbox وExcel وأنظمة GIS.",
+    exp1_b1:"تصميم نماذج KoboToolbox لجمع البيانات متعددة القطاعات",
+    exp1_b2:"بناء لوحات بيانات لدعم مراقبة البرامج وتقارير الجهات المانحة",
+    exp1_b3:"ضمان جودة البيانات وبناء قدرات الكوادر من خلال التدريب",
+    exp1_b4:"دمج الرؤى الجغرافية في تقارير البرامج للرؤية التشغيلية",
+    exp2_role:"محلل GIS", exp2_body:"تطوير رؤى البيانات المكانية لتحسين تحليل السوق وتوزيع المسارات والتواصل مع العملاء.",
+    exp2_b1:"إنشاء قواعد البيانات الجيومكانية والخرائط والمرئيات لتحديد اتجاهات العملاء",
+    exp2_b2:"تحليل بيانات الموقع لتحسين كفاءة التسليم وتحسين المسارات",
+    exp2_b3:"التعاون مع فرق التسويق واللوجستيات لدمج الرؤى الجغرافية",
+    exp3_role:"محلل GIS", exp3_body:"إجراء التحليل المكاني والتصور لدعم مبادرات الصحة العامة بما في ذلك مراقبة الأمراض وتخصيص الموارد الصحية.",
+    exp3_b1:"تطوير قواعد البيانات الجيومكانية لتتبع المؤشرات الصحية في السودان",
+    exp3_b2:"إنتاج الخرائط والتقارير المكانية لصنع القرار في الصحة العامة",
+    exp3_b3:"تحديد الأنماط الجغرافية في بيانات الصحة لتوجيه الموارد",
+    exp4_role:"محلل GIS", exp4_body:"جمع ومعالجة وتحليل البيانات المكانية لدعم التخطيط العمراني وإدارة الموارد في محلية كررى.",
+    exp5_role:"معيد (دوام جزئي)", exp5_body:"دعم مقررات قسم GIS: أنظمة قواعد البيانات، رسم الطقس والمناخ، والأنظمة الخبيرة.",
+    exp5_b1:"الإشراف على جلسات المختبر العملية في QGIS وArcGIS وERDAS",
+    exp5_b2:"تطوير المواد التعليمية والدروس المختبرية لطلاب البكالوريوس",
+    fl_eyebrow:"العمل المستقل", fl_title:"مشاريع", fl_title2:"حرة",
+    fl1_h:"تصورات المزارعين حول تغير المناخ — ولاية النيل الأبيض",
+    fl1_p:"تحليل تأثيرات تغير المناخ على الممارسات الزراعية لصالح المجلس الأعلى للبيئة باستخدام KoboToolbox.",
+    fl2_h:"رسم خرائط توزيع الأكاشيا — المملكة العربية السعودية",
+    fl2_p:"تطوير خرائط جيومكانية لتوزيع الأكاشيا عبر المناطق السعودية لدعم جهود الحفاظ على البيئة.",
+    fl3_h:"تأثير النزاع على القطاع الزراعي في السودان",
+    fl3_p:"تحليل تأثيرات الحرب على الأراضي المزروعة باستخدام Google Earth Engine وPython عبر تحليل Sentinel-2 متعدد الزمن.",
+    edu_eyebrow:"الأكاديمي والمهني", edu_title:"التعليم والشهادات",
+    edu_h:"التعليم", cert_h:"الشهادات والتدريب",
+    deg1:"ماجستير في نظم المعلومات الجغرافية والاستشعار عن بُعد",
+    deg2:"بكالوريوس الجغرافيا والبيئة — تخصص GIS",
+    thesis:"رسالة: تقييم تدهور الغطاء النباتي — حالة محليات الضندر",
+    cert1:"محترف إدارة المشاريع (PMP)",
+    cert2:"تخصص نظم المعلومات الجغرافية (4 دورات)",
+    cert3:"تخصص الدعم التقني من Google",
+    cert4:"تخصص تحليل البيانات من Google",
+    cert5:"مقدمة في الخدمة الاجتماعية والإغاثة الإنسانية",
+    gal_eyebrow:"معرض الأعمال المرئي", gal_title:"معرض الأعمال",
+    gal_desc:"عرض مرئي للخرائط ولوحات البيانات ومخرجات الاستشعار عن بُعد وأنظمة البيانات الميدانية. استبدل مسار كل صورة بملفاتك الخاصة.",
+    gal_notice:"لإضافة صورك: افتح ملف HTML وابحث عن كل وسم <img src=\"\"> في قسم المعرض، واستبدل src=\"\" بمسار صورتك.",
+    gal_add:"أضف عملك هنا",
+    gal1_h:"خريطة هشاشة الجفاف — دارفور",
+    gal1_p:"تحليل NDVI متعدد الزمن باستخدام صور Landsat لتصنيف شدة الجفاف عبر مناطق الزراعة والرعي، وقد استُخدم في تخطيط الاستجابة الطارئة.",
+    gal2_h:"تغطية المرافق الصحية — السودان",
+    gal2_p:"تحليل مكاني لتوزيع الموارد الصحية ورسم خرائط أنماط الأمراض لوزارة الصحة السودانية، لتحديد المناطق المحرومة ذات الأولوية.",
+    gal3_h:"لوحة مراقبة برامج PUI",
+    gal3_p:"لوحة مراقبة إنسانية في الوقت الحقيقي تغطي تسجيل المستفيدين وتتبع الأنشطة والتوزيع الجغرافي للبرامج.",
+    gal4_h:"توزيع الأكاشيا — المملكة العربية السعودية",
+    gal4_p:"رسم خرائط جيومكانية لتوزيع أنواع الأكاشيا باستخدام تصنيف الاستشعار عن بُعد، لدعم تخطيط الحفاظ على البيئة.",
+    gal5_h:"تأثير الحرب على الأراضي الزراعية في السودان",
+    gal5_p:"كشف التغير متعدد الزمن باستخدام GEE وPython لقياس خسائر الأراضي المزروعة جراء النزاع عبر تحليل Sentinel-2.",
+    contact_eyebrow:"تواصل معي", contact_title:"لنتواصل",
+    contact_intro:"سواء كان لديك مشروع GIS أو تحتاج إلى تحليل مكاني للعمل الإنساني أو تريد التعاون في بحث بيئي — يسعدني سماعك.",
+    c_email:"البريد الإلكتروني", c_portfolio:"الموقع الشخصي",
+    c_phone:"الهاتف", c_loc:"الموقع",
+    f_fname:"الاسم الأول", f_lname:"اسم العائلة",
+    f_email:"البريد الإلكتروني", f_subject:"الموضوع", f_msg:"الرسالة",
+    btn_send:"إرسال الرسالة",
+    f_fname_ph:"اسمك الأول", f_lname_ph:"اسم العائلة",
+    f_subject_ph:"كيف يمكنني المساعدة؟", f_msg_ph:"رسالتك...",
+    footer_copy:"© 2025 حيدر الداو · محلل GIS · بورت سودان، السودان"
+  }
+};
+
+/* ════════════════════════════════════════════════════════
+   LANGUAGE SYSTEM
+════════════════════════════════════════════════════════ */
+let currentLang = localStorage.getItem('lang') ||
+  (navigator.language.startsWith('ar') ? 'ar' : 'en');
+
+function setLang(lang) {
+  currentLang = lang;
+  localStorage.setItem('lang', lang);
+  applyLang();
+}
+
+function applyLang() {
+  const lang = currentLang;
+  const dict = T[lang];
+  const html = document.documentElement;
+  html.setAttribute('lang', lang);
+  html.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+
+  /* Switch font for Arabic */
+  document.body.style.fontFamily = lang === 'ar'
+    ? "'Tajawal', sans-serif"
+    : "'Plus Jakarta Sans', sans-serif";
+
+  /* Apply translations */
+  document.querySelectorAll('[data-t]').forEach(el => {
+    const key = el.getAttribute('data-t');
+    if (dict[key] !== undefined) el.textContent = dict[key];
   });
 
-  const secs = document.querySelectorAll('section[id]');
-  const nlinks = document.querySelectorAll('.nav-links a');
-  function updateNav() {
-    const y = window.scrollY + 120;
-    secs.forEach(s => {
-      const lnk = document.querySelector(`.nav-links a[href="#${s.id}"]`);
-      if (lnk) lnk.classList.toggle('active', y >= s.offsetTop && y < s.offsetTop + s.offsetHeight);
+  /* Placeholders */
+  document.querySelectorAll('[data-placeholder-t]').forEach(el => {
+    const key = el.getAttribute('data-placeholder-t');
+    if (dict[key]) el.placeholder = dict[key];
+  });
+
+  /* Update lang buttons */
+  document.getElementById('btnEN').classList.toggle('active', lang === 'en');
+  document.getElementById('btnAR').classList.toggle('active', lang === 'ar');
+
+  /* Update section title spans (they contain the accent word) */
+  if (lang === 'ar') {
+    const st = document.querySelectorAll('.section-title');
+    st.forEach(el => {
+      /* Wrap the last word in span if not already present */
     });
   }
+}
 
-  /* Hamburger */
-  const ham = document.getElementById('ham');
-  const mob = document.getElementById('mob');
-  ham.addEventListener('click', () => { ham.classList.toggle('open'); mob.classList.toggle('open'); });
-  function closeMob() { ham.classList.remove('open'); mob.classList.remove('open'); }
+/* ════════════════════════════════════════════════════════
+   THEME SYSTEM
+════════════════════════════════════════════════════════ */
+let currentTheme = localStorage.getItem('theme') ||
+  (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
 
-  /* Reveal */
-  const revObs = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revObs.unobserve(e.target); } });
-  }, { threshold: 0.12 });
-  document.querySelectorAll('.reveal').forEach(el => revObs.observe(el));
+function applyTheme() {
+  document.documentElement.setAttribute('data-theme', currentTheme);
+  const icon = document.getElementById('themeIcon');
+  icon.className = currentTheme === 'dark'
+    ? 'fa-solid fa-sun'
+    : 'fa-solid fa-moon';
+}
 
-  /* Skill bars */
-  const barObs = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.style.width = e.target.dataset.w + '%'; barObs.unobserve(e.target); } });
-  }, { threshold: 0.3 });
-  document.querySelectorAll('.bar-fill').forEach(b => barObs.observe(b));
+function toggleTheme() {
+  currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
+  localStorage.setItem('theme', currentTheme);
+  applyTheme();
+}
 
-  /* Contact form */
-  function sendForm() {
-    const em = document.getElementById('em').value.trim();
-    const msg = document.getElementById('msg').value.trim();
-    const fn = document.getElementById('fn').value.trim();
-    const sub = document.getElementById('sub').value.trim() || 'Portfolio Inquiry';
-    if (!em || !msg) { alert('Please fill in your email and message.'); return; }
-    window.location.href = `mailto:haidaraldaw010@gmail.com?subject=${encodeURIComponent(sub)}&body=${encodeURIComponent('From: ' + fn + ' (' + em + ')\n\n' + msg)}`;
+/* ════════════════════════════════════════════════════════
+   NAVBAR
+════════════════════════════════════════════════════════ */
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 60);
+  updateActiveNav();
+});
+
+const secs = document.querySelectorAll('section[id]');
+function updateActiveNav() {
+  const y = window.scrollY + 120;
+  secs.forEach(s => {
+    const lnk = document.querySelector(`.nav-links a[href="#${s.id}"]`);
+    if (lnk) lnk.classList.toggle('active', y >= s.offsetTop && y < s.offsetTop + s.offsetHeight);
+  });
+}
+
+const ham = document.getElementById('ham');
+const mob = document.getElementById('mob');
+ham.addEventListener('click', () => {
+  ham.classList.toggle('open');
+  mob.classList.toggle('open');
+});
+function closeMob() {
+  ham.classList.remove('open');
+  mob.classList.remove('open');
+}
+
+/* ════════════════════════════════════════════════════════
+   CV DROPDOWN
+════════════════════════════════════════════════════════ */
+document.getElementById('cvBtn').addEventListener('click', () => {
+  document.getElementById('cvMenu').classList.toggle('open');
+});
+document.addEventListener('click', e => {
+  if (!e.target.closest('.cv-dropdown'))
+    document.getElementById('cvMenu').classList.remove('open');
+});
+
+/* ════════════════════════════════════════════════════════
+   SCROLL REVEAL (Intersection Observer)
+════════════════════════════════════════════════════════ */
+const revObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      revObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => revObs.observe(el));
+
+/* Skill bars */
+const barObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.style.width = e.target.dataset.w + '%';
+      barObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.3 });
+document.querySelectorAll('.prof-fill').forEach(b => barObs.observe(b));
+
+
+/* ════════════════════════════════════════════════════════
+   CONTACT FORM
+════════════════════════════════════════════════════════ */
+function sendForm() {
+  const em  = document.getElementById('em').value.trim();
+  const msg = document.getElementById('msg').value.trim();
+  const fn  = document.getElementById('fn').value.trim();
+  const sub = document.getElementById('sub').value.trim() || 'Portfolio Inquiry';
+  if (!em || !msg) {
+    alert(currentLang === 'ar' ? 'يرجى ملء البريد الإلكتروني والرسالة.' : 'Please fill in your email and message.');
+    return;
   }
+  window.location.href = `mailto:haidaraldaw010@gmail.com?subject=${encodeURIComponent(sub)}&body=${encodeURIComponent('From: '+fn+' ('+em+')\n\n'+msg)}`;
+}
+
+/* ════════════════════════════════════════════════════════
+   INIT
+════════════════════════════════════════════════════════ */
+document.addEventListener('DOMContentLoaded', () => {
+  applyTheme();
+  applyLang();
+});
 </script>
 </body>
 </html>
